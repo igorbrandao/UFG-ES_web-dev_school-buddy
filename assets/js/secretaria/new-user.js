@@ -1,4 +1,5 @@
 function switchForm (formValue) {
+	$('#create').prop('disabled', false);
 	document.getElementById("type").value = formValue;
 	document.getElementById("create").className = "btn btn-info";
 	document.getElementById("forms").innerHTML = commonForms() + specificForms(formValue);
@@ -13,17 +14,6 @@ function commonForms(){
 			"</span>" +
 			"<span class='col-lg-6'>" +
 				"<input type='email' class='form-control' id='email'>" +
-			"</span>" +
-		"</span>" +
-	"</div>" +
-	"<br>" +
-	"<div class='row'>" +
-		"<span class='form-group'>" +
-			"<span class='col-lg-2 text-center'>" +
-				"<label for='Pass' class=''>Senha</label>" +
-			"</span>" +
-			"<span class='col-lg-6'>" +
-				"<input type='password' class='form-control' id='pass'>" +
 			"</span>" +
 		"</span>" +
 	"</div>" +
@@ -76,17 +66,7 @@ function commonForms(){
 
 function specificForms(formValue){
 	if ( formValue === "Aluno" ) {
-		return "" +
-		"<div class='row'>" +
-			"<span class='form-group'>" +
-				"<span class='col-lg-2 text-center'>" +
-					"<label for='enrollment' class=''>Matrícula</label>" +
-				"</span>" +
-				"<span class='col-lg-6'>" +
-					"<input type='number' class='form-control' id='name'>" +
-				"</span>" +
-			"</span>" +
-		"</div>";
+		return "";
 	}
 	else if ( formValue === "Professor" ) {
 		return "" +

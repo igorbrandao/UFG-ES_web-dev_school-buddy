@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon/favicon-32x32.png">
+		<link rel="manifest" href="../assets/img/favicon/manifest.json">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="theme-color" content="#ffffff">
+		<meta charset="utf-8">
+
+		<title>Editar Lista</title>
+
+        <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+		<link href="../assets/css/bootstrap.css" rel="stylesheet">
+        <link href="../assets/css/style.css" rel="stylesheet">
+	</head>
+	<body>
+
+		<!-- FIXED TOP NAVBAR -->
+
+		<nav class="navbar navbar-default navbar-fixed-top">
+    		<div class="container-fluid">
+    			<div class="navbar-header">
+    				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+    				<span class="sr-only">Toggle navigation</span>
+    				<span class="icon-bar"></span>
+    				<span class="icon-bar"></span>
+    				<span class="icon-bar"></span>
+    				</button>
+    				<a class="navbar-brand" href="home.html">[Nome da Escola]</a>
+    			</div>
+    			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    				<div class="col-sm-4 col-md-4 col-lg-4">
+    					<form class="navbar-form" role="search">
+    						<div class="input-group">
+    							<input type="text" class="form-control" placeholder="Pesquisar" name="search">
+    							<div class="input-group-btn">
+    								<a class="btn btn-default" href="search.html"><i class="glyphicon glyphicon-search"></i></a>
+    							</div>
+    						</div>
+    					</form>
+    				</div>
+    				<ul class="nav navbar-nav navbar-right">
+    					<li class="dropdown">
+    						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Administrador <b class="caret"></b></a>
+    						<ul class="dropdown-menu">
+								<li><a href="new-user.html">Cadastrar Usuário</a></li>
+								<li><a href="edit-user.html">Modificar Usuário</a></li>
+								<li><a href="new-class.html">Cadastrar Turma</a></li>
+								<li><a href="edit-class.html">Modificar Turma</a></li>
+    							<li class="divider"></li>
+    							<li><a href="../sign-in.html">Sair</a></li>
+    						</ul>
+    					</li>
+    				</ul>
+    			</div><!-- /.navbar-collapse -->
+    		</div><!-- /.container-fluid -->
+    	</nav>
+
+		<!-- BLUE WRAP -->
+
+		<div id="blue">
+			<div class="container-fluid">
+				<div class="row">
+					<h3>Edição de Usuário - Lista</h3>
+				</div><!-- /row -->
+			</div><!-- /container-fluid -->
+		</div><!-- /blue -->
+
+		<!-- CONTENT -->
+
+		<div class="row">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="well">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Matrícula</th>
+								<th>Tipo</th>
+								<th>Nome</th>
+								<th>Email</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>341257</td>
+								<td>Aluno</td>
+								<td>Mark Thompson</td>
+								<td>email1@domain1.com</td>
+								<td>
+									<a href="#editUser" role="button" data-toggle="modal"><i class="glyphicon glyphglyphicon glyphicon-pencil"></i></a>
+									<a href="#deleteUser" role="button" data-toggle="modal"><i class="glyphicon glyphglyphicon glyphicon-remove"></i></a>
+								</td>
+							</tr>
+							<tr>
+								<td>341258</td>
+								<td>Aluno</td>
+								<td>Ashley Jacobs</td>
+								<td>email2@domain2.com</td>
+								<td>
+									<a href="#editUser" role="button" data-toggle="modal"><i class="glyphicon glyphicon-pencil"></i></a>
+									<a href="#deleteUser" role="button" data-toggle="modal"><i class="glyphicon glyphicon-remove"></i></a>
+								</td>
+							</tr>
+							<tr>
+								<td>341259</td>
+								<td>Responsável</td>
+								<td>Audrey Ann</td>
+								<td>email3@domain3.com</td>
+								<td>
+									<a href="#editUser" role="button" data-toggle="modal"><i class="glyphicon glyphicon-pencil"></i></a>
+									<a href="#deleteUser" role="button" data-toggle="modal"><i class="glyphicon glyphicon-remove"></i></a>
+								</td>
+							</tr>
+							<tr>
+								<td>341260</td>
+								<td>Aluno</td>
+								<td>John Robinson</td>
+								<td>email4@domain4.com</td>
+								<td>
+									<a href="#editUser" role="button" data-toggle="modal"><i class="glyphicon glyphicon-pencil"></i></a>
+									<a href="#deleteUser" role="button" data-toggle="modal"><i class="glyphicon glyphicon-remove"></i></a>
+								</td>
+							</tr>
+							<tr>
+								<td>341261</td>
+								<td>Professor</td>
+								<td>Aaron Butler</td>
+								<td>email5@domain5.com</td>
+								<td>
+									<a href="#editUser" role="button" data-toggle="modal"><i class="glyphicon glyphicon-pencil"></i></a>
+									<a href="#deleteUser" role="button" data-toggle="modal"><i class="glyphicon glyphicon-remove"></i></a>
+								</td>
+							</tr>
+							<tr>
+								<td>341262</td>
+								<td>Professor</td>
+								<td>Chris Albert</td>
+								<td>email6@domain6.com</td>
+								<td>
+									<a href="#editUser" role="button" data-toggle="modal"><i class="glyphicon glyphicon-pencil"></i></a>
+									<a href="#deleteUser" role="button" data-toggle="modal"><i class="glyphicon glyphicon-remove"></i></a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-3 col-md-offset-1">
+				<nav>
+					<ul class="pagination">
+						<li>
+							<a href="#" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+							</a>
+						</li>
+						<li><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">5</a></li>
+						<li>
+							<a href="#" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+
+		<div class="modal fade" id="editUser" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel">Editanto Usuário [Número de Matrícula]</h4>
+					</div>
+					<div class="modal-body">
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        				<button id="userEdited" onClick="getUserByEnrollmentNumber(this)" type="button" class="btn btn-primary">Salvar Modificações</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" id="deleteUser" tabindex="-1" role="dialog">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title" id="myModalLabel">Atenção!</h4>
+					</div>
+					<div class="modal-body">
+						<p><b>Apagar um usuário é uma ação irreversível. Deseja prosseguir?</b></p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+        				<button type="button" class="btn btn-danger">Apagar Usuário</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- FOOTER -->
+
+		<div id="footerwrap">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-4">
+						<h4>Sobre</h4>
+						<div class="hline-w">
+
+						</div>
+						<p>Meta e objetivos da escola.</p>
+					</div>
+					<div class="col-lg-4">
+						<h4>Links Sociais/Relacionados</h4>
+						<div class="hline-w">
+
+						</div>
+						<p>
+							<a href="#"><i class="fa fa-facebook"></i></a>
+							<a href="#"><i class="fa fa-twitter"></i></a>
+							<a href="#"><i class="fa fa-tumblr"></i></a>
+						</p>
+					</div>
+					<div class="col-lg-4">
+						<h4>Localização</h4>
+						<div class="hline-w">
+
+						</div>
+						<p>
+							Logradouro, Número,<br/>
+							CEP, Cidade, Estado<br/>
+							País.<br/>
+						</p>
+					</div>
+				</div><!-- /row -->
+			</div><!-- /container -->
+		</div><!-- /footerwrap -->
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="../assets/js/bootstrap.min.js"></script>
+		<script src="../assets/js/retina-1.1.0.js"></script>
+		<script src="../assets/js/jquery.hoverdir.js"></script>
+		<script src="../assets/js/jquery.hoverex.min.js"></script>
+		<script src="../assets/js/jquery.prettyPhoto.js"></script>
+		<script src="../assets/js/jquery.isotope.min.js"></script>
+		<script src="../assets/js/secretaria/all-users.js"></script>
+		<script src="../assets/js/custom.js"></script>
+
+	</body>
+</html>
