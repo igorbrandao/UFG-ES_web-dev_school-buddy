@@ -7,7 +7,7 @@
 		<meta name="theme-color" content="#ffffff">
 		<meta charset="utf-8">
 
-		<title>Cadastro</title>
+		<title>Novo Usuário</title>
 
         <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
 		<link href="../assets/css/bootstrap.css" rel="stylesheet">
@@ -45,6 +45,8 @@
     						<ul class="dropdown-menu">
     							<li><a href="#">Cadastrar Usuário</a></li>
 								<li><a href="#">Modificar Usuário</a></li>
+								<li><a href="#">Cadastrar Turma</a></li>
+								<li><a href="#">Modificar Turma</a></li>
     							<li class="divider"></li>
     							<li><a href="../sign-in.html">Sair</a></li>
     						</ul>
@@ -59,7 +61,7 @@
 		<div id="blue">
 			<div class="container-fluid">
 				<div class="row">
-					<h3>Cadastro</h3>
+					<h3>Cadastro de Novo Usuário</h3>
 				</div><!-- /row -->
 			</div><!-- /container-fluid -->
 		</div><!-- /blue -->
@@ -73,21 +75,19 @@
 					<div class="hline">
 
 					</div>
-					<p>Aqui você pode criar uma conta para fazer uso do SempreUFG.</p>
+					<p>Aqui você pode criar uma conta para fazer uso do School Buddy. Comece selecionando o tipo de conta.</p>
 					<form role="form">
 						<div class="row">
 							<span class="col-lg-2 dropdown">
-								<button href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Categoria <b class="caret"></b></button>
+								<button href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Tipo <b class="caret"></b></button>
 								<ul class="dropdown-menu">
-									<li><a onclick="switchForm('PRPG', false)" href="#">PRPG</a></li>
-									<li><a onclick="switchForm('CAVI', false)" href="#">CAVI</a></li>
-									<li><a onclick="switchForm('PROGRAD', false)" href="#">PROGRAD</a></li>
-									<li><a onclick="switchForm('Gestor', false)" href="#">Gestor</a></li>
-									<li><a onclick="switchForm('Egresso', true)" href="#">Egresso</a></li>
+									<li><a onclick="switchForm('Aluno')" href="#">Aluno</a></li>
+									<li><a onclick="switchForm('Professor')" href="#">Professor</a></li>
+									<li><a onclick="switchForm('Responsavel')" href="#">Responsável</a></li>
 								</ul>
 							</span>
 							<span class="col-lg-6">
-							<input class="form-control" type="text" id="category" placeholder="selecione" disabled="disabled">
+							<input class="form-control" type="text" id="type" placeholder="selecione" disabled="disabled">
 							</span>
 						</div>
 						<br>
@@ -97,7 +97,7 @@
 						<br>
 						<div class="row">
 							<span class="col-lg-offset-7 col-lg-1">
-							<button id="create" href="#" class="btn btn-info disabled" style="float: right;">Criar Conta</button>
+							<button id="create" href="#" class="btn btn-info disabled" style="float: right;">Criar Novo Usuário</button>
 							</span>
 						</div>
 					</form>
@@ -112,7 +112,7 @@
 						<img src="../assets/img/placeholder.png" alt="Foto de Perfil">
 						<div class="caption">
 							<h3>Foto de Perfil</h3>
-							<p>Faça o upload de uma imagem para o seu perfil usando o botão abaixo.</p>
+							<p>Faça o upload de uma imagem para perfil do usuário usando o botão abaixo.</p>
 							<p><a href="#" class="btn btn-primary" role="button">Upload</a>
 						</div>
 					</div>
@@ -165,7 +165,7 @@
 		<script src="../assets/js/jquery.hoverex.min.js"></script>
 		<script src="../assets/js/jquery.prettyPhoto.js"></script>
 		<script src="../assets/js/jquery.isotope.min.js"></script>
-		<script src="../assets/js/secretaria/sign-up.js"></script>
+		<script src="../assets/js/secretaria/new-user.js"></script>
 		<script src="../assets/js/custom.js"></script>
 
 	</body>
