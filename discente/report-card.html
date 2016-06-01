@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 	<head>
 		<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon/favicon-32x32.png">
@@ -6,7 +6,7 @@
 		<link href="../assets/css/bootstrap.css" rel="stylesheet">
         <link href="../assets/css/style.css" rel="stylesheet">
 		<meta charset="utf-8">
-		<title>Home</title>
+		<title>Boletim</title>
 	</head>
 	<body>
 
@@ -28,8 +28,7 @@
     					<li class="dropdown">
     						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Nome do Aluno<b class="caret"></b></a>
     						<ul class="dropdown-menu">
-    							<li><a href="class.html">Vizualizar Turma</a></li>
-								<li><a href="report-card.html">Vizualizar Boletim</a></li>
+								<li><a href="edit-user.html">Vizualizar Boletim</a></li>
     							<li class="divider"></li>
     							<li><a href="../sign-in.html">Sair</a></li>
     						</ul>
@@ -45,31 +44,65 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-lg-8 col-lg-offset-2">
-						<h3>Olá, [Nome do Aluno]. Essa é a sua Home!</h3>
-						<h5>Com a visão geral da sua grade anual, disciplinas cadastradas, notas e presenças nas respctivas disciplinas, além do seu boletim bimestral.</h5>
+						<h3>Olá, Nome do Aluno.</h3>
+						<h5>Essas são as suas notas bimestrais.</h5>
 					</div>
 				</div><!-- /row -->
 			</div><!-- /container-fluid -->
 		</div><!-- /blue -->
-
-		<!-- SERVICE LOGOS -->
-
-		<div id="service">
+		
+		<!-- LIST CLASS -->
+		
 			<div class="container">
-				<div class="row centered">
-					<div class="col-md-6">
-						<a href="class.html"><i class="fa fa-graduation-cap"></i></a>
-						<a href="class.html"><h4>Turma</h4></a>
-						<p>Informações sobre as disciplinas do seu atual ano letivo. Fique por dentro dos trabalhos, atividades e avaliações, e acompanhe seu desempenho.</p>
-					</div>
-					<div class="col-md-6">
-						<a href="report-card.html"><i class="glyphicon glyphicon-list-alt"></i></a>
-						<a href="report-card.html"><h4>Boletim</h4></a>
-						<p>Visualize seu boletim bimestral ou final.</p>
+				<div class="row">
+					<div class="col-md-10 col-md-offset-1">
+						<div class="well">
+							<table class="table">
+								<thead>
+									<tr>
+										<th>Nome da disciplina</th>
+										<th>1° Bimestre</th>
+										<th>2° Bimestre</th>
+										<th>3° Bimestre</th>
+										<th>4° Bimestre</th>
+									</tr>
+								</thead>
+							<tbody>
+								<tr>
+									<td>Gramatica</td>
+									<td>6.5</td>
+									<td>7.0</td>
+									<td>6.5</td>
+									<td>    </td>
+								</tr>
+								<tr>
+									<td>Quimica</td>
+									<td>9.4</td>
+									<td>8.0</td>
+									<td>9.2</td>
+									<td></td>
+								</tr>
+								<tr>
+									<td>Matematica</td>
+									<td>9.0</td>
+									<td>8.5</td>
+									<td>8.8</td>
+									<td> </td>
+								</tr>
+								<tr>
+									<td> </td>
+									<td><a href="#" class="btn btn-theme">Baixar PDF</a></p></td>
+									<td><a href="#" class="btn btn-theme">Baixar PDF</a></p></td>
+									<td><a href="#" class="btn btn-theme">Baixar PDF</a></p></td>
+									<td><a href="#" class="btn btn-theme">Baixar PDF</a></p></td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
-			</div><!--/container -->
-		</div><!--/service -->
+			</div>
+				
+		</div><!--/container -->
 
 		<!-- FOOTER -->
 
