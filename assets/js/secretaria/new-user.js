@@ -57,7 +57,7 @@ function commonForms(){
 				"<label for='Phone' class=''>Telefone</label>" +
 			"</span>" +
 			"<span class='col-lg-6'>" +
-				"<input type='number' class='form-control' id='phone'>" +
+				"<input type='text' class='form-control' id='phone'>" +
 			"</span>" +
 		"</span>" +
 	"</div>" +
@@ -86,7 +86,7 @@ function specificForms(formValue){
 		"<div class='row'>" +
 			"<span class='form-group'>" +
 				"<span class='col-lg-2 text-center'>" +
-					"<label for='entes' class=''>Matrícula dos Entes</label>" +
+					"<label for='entes' class=''>Matrícula do(s) Ente(s)</label>" +
 				"</span>" +
 				"<span class='col-lg-6'>" +
 					"<input type='text' class='form-control' id='entes'>" +
