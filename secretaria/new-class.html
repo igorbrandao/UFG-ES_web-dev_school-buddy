@@ -1,1 +1,211 @@
-Something.
+<!DOCTYPE html>
+|<html lang="pt-BR">
+	<head>
+		<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon/favicon-32x32.png">
+		<link rel="manifest" href="../assets/img/favicon/manifest.json">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="theme-color" content="#ffffff">
+		<meta charset="utf-8">
+
+		<title>Nova Turma</title>
+
+        <link href="../assets/css/font-awesome.min.css" rel="stylesheet">
+		<link href="../assets/css/bootstrap.css" rel="stylesheet">
+        <link href="../assets/css/style.css" rel="stylesheet">
+        <link href="../assets/css/secretaria/new-class.css" rel="stylesheet">
+
+	</head>
+	<body>
+
+		<!-- FIXED TOP NAVBAR -->
+
+		<nav class="navbar navbar-default navbar-fixed-top">
+    		<div class="container-fluid">
+    			<div class="navbar-header">
+    				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+    				<span class="sr-only">Toggle navigation</span>
+    				<span class="icon-bar"></span>
+    				<span class="icon-bar"></span>
+    				<span class="icon-bar"></span>
+    				</button>
+    				<a class="navbar-brand" href="home.html">[Nome da Escola]</a>
+    			</div>
+    			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    				<ul class="nav navbar-nav navbar-right">
+    					<li class="dropdown">
+    						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Administrador <b class="caret"></b></a>
+    						<ul class="dropdown-menu">
+    							<li><a href="new-user.html">Cadastrar Usuário</a></li>
+								<li><a href="edit-user.html">Modificar Usuário</a></li>
+								<li><a href="new-class.html">Cadastrar Turma</a></li>
+								<li><a href="edit-class.html">Modificar Turma</a></li>
+    							<li class="divider"></li>
+    							<li><a href="../sign-in.html" >Sair  <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+    						</ul>
+    					</li>
+    				</ul>
+    			</div><!-- /.navbar-collapse -->
+    		</div><!-- /.container-fluid -->
+    	</nav>
+
+		<!-- BLUE WRAP -->
+
+		<div id="blue">
+			<div class="container-fluid">
+				<div class="row">
+					<h3>Cadastro de Nova Turma</h3>
+				</div><!-- /row -->
+			</div><!-- /container-fluid -->
+		</div><!-- /blue -->
+
+		<!-- CONTENT -->
+
+        <div class="container">
+            <div class="row">
+                <div class="wizard">
+                    <div class="wizard-inner">
+                        <div class="connecting-line"></div>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active">
+                                <a href="#step1" data-toggle="tab" aria-controls="step1" role="tab" title="Início">
+                                <span class="round-tab">
+                                <i class="fa fa-sliders"></i>
+                                </span>
+                                </a>
+                            </li>
+                            <li role="presentation" class="disabled">
+                                <a href="#step2" data-toggle="tab" aria-controls="step2" role="tab" title="Professores e Disciplinas">
+                                <span class="round-tab">
+                                <i class="fa fa-university"></i>
+                                </span>
+                                </a>
+                            </li>
+                            <li role="presentation" class="disabled">
+                                <a href="#step3" data-toggle="tab" aria-controls="step3" role="tab" title="Alunos">
+                                <span class="round-tab">
+                                <i class="fa fa-user-plus"></i>
+                                </span>
+                                </a>
+                            </li>
+                            <li role="presentation" class="disabled">
+                                <a href="#step4" data-toggle="tab" aria-controls="step4" role="tab" title="Revisão">
+                                <span class="round-tab">
+                                <i class="fa fa-chevron-left"></i>
+                                </span>
+                                </a>
+                            </li>
+                            <li role="presentation" class="disabled">
+                                <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Completo">
+                                <span class="round-tab">
+                                <i class="fa fa-check"></i>
+                                </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+                        <div class="tab-pane active" role="tabpanel" id="step1">
+                            <h4>Configuração Inicial</h4>
+        					<p>Crie uma turma para os alunos (máximo de 50) de sua escola. Turmas tem uma ou mais disciplinas (máximo de 10), cada uma delas ministrada por um professor especializado naquela área.</p>
+    						<div>
+
+    						</div>
+                            <ul class="list-inline pull-right">
+                                <li><button type="button" class="btn btn-primary btn-info-full next-step">Prosseguir</button></li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane" role="tabpanel" id="step2">
+                            <h4>Definição de Disciplinas e Professores</h4>
+        					<p>Defina quais disciplinas essa turma fornecerá e quais serão os professores que as ministrarão.</p>
+    						<div>
+
+    						</div>
+                            <ul class="list-inline pull-right">
+                                <li><button type="button" class="btn btn-default prev-step">Voltar</button></li>
+                                <li><button type="button" class="btn btn-primary btn-info-full next-step">Prosseguir</button></li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane" role="tabpanel" id="step3">
+                            <h4>Adicionar Estudantes</h4>
+        					<p>Adicione alunos já cadastrados à esta turma usando o número de matrícula de cada um.</p>
+    						<div>
+
+    						</div>
+                            <ul class="list-inline pull-right">
+                                <li><button type="button" class="btn btn-default prev-step">Voltar</button></li>
+                                <li><button type="button" class="btn btn-primary btn-info-full next-step">Prosseguir</button></li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane" role="tabpanel" id="step4">
+                            <h4>Revisão</h4>
+        					<p>Confira os dados da turma que você está prestes a criar logo abaixo.</p>
+    						<div>
+
+    						</div>
+                            <ul class="list-inline pull-right">
+                                <li><button type="button" class="btn btn-warning prev-step">Tem algo Errado...</button></li>
+                                <li><button type="button" class="btn btn-success btn-info-full next-step">Criar Nova Turma</button></li>
+                            </ul>
+                        </div>
+                        <div class="tab-pane" role="tabpanel" id="complete">
+                            <h3>Turma criada</h3>
+                            <p>Uma nova turma com as informações fornecidas foi cadastrada.</p>
+                        </div>
+                        <div class="clearfix">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+		<!-- FOOTER -->
+
+		<div id="footerwrap">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-4">
+						<h4>Sobre</h4>
+						<div class="hline-w">
+
+						</div>
+						<p>Meta e objetivos da escola.</p>
+					</div>
+					<div class="col-lg-4">
+						<h4>Links Sociais/Relacionados</h4>
+						<div class="hline-w">
+
+						</div>
+						<p>
+							<a href="#"><i class="fa fa-facebook"></i></a>
+							<a href="#"><i class="fa fa-twitter"></i></a>
+							<a href="#"><i class="fa fa-tumblr"></i></a>
+						</p>
+					</div>
+					<div class="col-lg-4">
+						<h4>Localização</h4>
+						<div class="hline-w">
+
+						</div>
+						<p>
+							Logradouro, Número,<br/>
+							CEP, Cidade, Estado<br/>
+							País.<br/>
+						</p>
+					</div>
+				</div><!-- /row -->
+			</div><!-- /container -->
+		</div><!-- /footerwrap -->
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+		<script src="../assets/js/bootstrap.min.js"></script>
+		<script src="../assets/js/retina-1.1.0.js"></script>
+		<script src="../assets/js/jquery.hoverdir.js"></script>
+		<script src="../assets/js/jquery.hoverex.min.js"></script>
+		<script src="../assets/js/jquery.prettyPhoto.js"></script>
+		<script src="../assets/js/jquery.isotope.min.js"></script>
+		<script src="../assets/js/secretaria/new-class.js"></script>
+		<script src="../assets/js/custom.js"></script>
+
+	</body>
+</html>
