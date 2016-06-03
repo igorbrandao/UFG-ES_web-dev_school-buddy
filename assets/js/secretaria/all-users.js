@@ -1,9 +1,13 @@
 var updatingUserID;
 var deletingUserID;
 var userModal;
-var userData;
 var userType;
 
+var alertTexts =
+{
+        "notFound": "Um usuário com o número de matrícula informado não existe.",
+        "bug": "Sorry, bugs happen..."
+};
 $(document).ready(function () {
 
     $('.btn-filter').on('click', function () {
@@ -16,7 +20,7 @@ $(document).ready(function () {
         }
     });
 
-    $('.glyphicon-pencil').on('click', function () {
+    $('#usersTable').delegate('.glyphicon-pencil', 'click', function () {
         var editingRow = $('table#usersTable').find('tbody').find('#' + $(this).attr('id'));
         userData =
         {
@@ -31,6 +35,7 @@ $(document).ready(function () {
         userType = getUserType();
         userModal = $('#edit' + userType);
         updatingUserID = userData.enrollment;
+        alertTexts.update = "Os dados do " + userType + " de matrícula " + userData.enrollment + " foram alterados.";
         $(userModal).find("#editModalTitle").html("Editando " + userType + " " + userData.enrollment + ".");
         for (i = 0; i < Object.keys(userData).length; i++){
             var currentKey = Object.keys(userData)[i];
@@ -39,7 +44,7 @@ $(document).ready(function () {
         //$("#formID").val(userData.fieldValue);
     });
 
-    $('.glyphicon-remove').on('click', function () {
+    $('#usersTable').delegate('.glyphicon-remove', 'click', function () {
         var deletingRow = $('table#usersTable').find('tbody').find('#' + $(this).attr('id'));
         userData =
         {
@@ -47,8 +52,9 @@ $(document).ready(function () {
             "name": $(deletingRow).find('td:eq(2)').html(),
             "email": $(deletingRow).find('td:eq(3)').html(),
         };
-        console.log(userData);
+        userType = getUserType();
         deletingUserID = userData.enrollment;
+        alertTexts.delete = "O " + userType + " de matrícula " + userData.enrollment + " foi apagado.";
         $("#deleteModalTitle").html("Atenção! Deletando Usuário " + userData.enrollment + ".");
         $("#deletingUserInfo").html("<b>Nome: </b>" + userData.name + "<br>" + "<b>Email: </b>" + userData.email + ".");
     });
@@ -66,8 +72,18 @@ function getUserType(){
         return "Responsavel";
     }
     else {
-        window.alert("Sorry, bugs happen...");
+        showAlert("bug", "alert-danger");
     }
+}
+
+function showAlert (alertType, alertClass) {
+    $('#queryResult').html(
+        "<div id='queryAlert' class='alert alert-dismissible " + alertClass + "' role='alert'><button type='button' class='close' data-dismiss='alert'aria-label='Close'><span aria-hidden='true'>&times;</span></button>" + alertTexts[alertType] + "</div>"
+    );
+	$("#queryAlert").fadeTo(3000, 500).slideUp(500, function(){
+   		$("#queryAlert").alert('close');
+	});
+    userType = "";
 }
 
 function updateUser () {
@@ -81,8 +97,10 @@ function updateUser () {
             "<a href='#deleteUser' role='button' data-toggle='modal'><i id='" + updatingUserID + "' class='glyphicon glyphicon-remove'></i></a>" +
         "</td>"
     );
+    showAlert("update", "alert-success");
 }
 
 function deleteUser () {
     $('table#usersTable').find('tbody').find('#' + deletingUserID).html("");
+    showAlert("delete", "alert-info");
 }

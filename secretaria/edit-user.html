@@ -29,16 +29,6 @@
     				<a class="navbar-brand" href="home.html">[Nome da Escola]</a>
     			</div>
     			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-    				<div class="col-sm-4 col-md-4 col-lg-4">
-    					<form class="navbar-form" role="search">
-    						<div class="input-group">
-    							<input type="text" class="form-control" placeholder="Pesquisar" name="search">
-    							<div class="input-group-btn">
-    								<a class="btn btn-default" href="search.html"><i class="glyphicon glyphicon-search"></i></a>
-    							</div>
-    						</div>
-    					</form>
-    				</div>
     				<ul class="nav navbar-nav navbar-right">
     					<li class="dropdown">
     						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Administrador <b class="caret"></b></a>
@@ -78,61 +68,248 @@
 					<p>Aqui você pode alterar/atualizar os dados de uma conta. Basta informar o número de matrícula.</p>
 					<form role="form">
 						<div class="row">
-                            <span class="form-group">
-                    			<span class="col-lg-2 text-center">
-                    				<label for="Enrollment">Número de Matrícula</label>
-                    			</span>
-    							<span class="col-lg-6">
-    							<input class="form-control" type="number" id="enrollment" placeholder="Matrícula">
-    							</span>
-                            </span>
+                			<span class="col-lg-3">
+                				<label for="Enrollment">Número de Matrícula</label>
+                			</span>
 						</div>
-						<br>
-						<div id="forms">
-                            <!-- Forms injetados pelo js -->
-						</div>
-						<br>
 						<div class="row">
-							<span class="col-lg-offset-7 col-lg-1">
-                                <button id="find" type="button" data-toggle="modal" data-target="#editUser" class="btn btn-info" style="float: right;">Encontrar Usuário</button>
+							<span class="col-lg-4">
+							<input class="form-control" type="number" id="enrollment" placeholder="Matrícula">
+							</span>
+							<span class="col-lg-offset-1 col-lg-1">
+                                <button id="find" type="button" data-toggle="modal" class="btn btn-info" style="float: right;">Encontrar Usuário</button>
     							</span>
 							</span>
+						</div>
+						<br>
+						<div id=queryResult>
+
 						</div>
 					</form>
 				</div>
 				<div class="col-lg-4">
-					<h4>Foto</h4>
+					<h4>Listagem</h4>
 					<div class="hline">
 
 					</div>
-					<p>Se não souber a matrícula, não tem problema. Use a listagem de todos os usuários</p>
-                    <br>
-                    <br>
-                    <br>
+					<p>Se não souber a matrícula, não tem problema. Use a visão geral de todos os usuários</p>
 					<p><a id="list" href="all-users.html" class="btn btn-info" style="float: left;">Todos os Usuários</a></p>
 				</div>
 
-                <div class="modal fade" id="editUser" tabindex="-1" role="dialog">
-        			<div class="modal-dialog" role="document">
-        				<div class="modal-content">
-        					<div class="modal-header">
-        						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        						<h4 class="modal-title" id="myModalLabel">Editanto Usuário [Número de Matrícula]</h4>
-        					</div>
-        					<div class="modal-body">
+				<!-- MODAL ALUNO -->
 
-        					</div>
-        					<div class="modal-footer">
-        						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                                <button id="userEdited" onClick="updateUser("")" type="button" class="btn btn-primary">Salvar Modificações</button>
-        					</div>
-        				</div>
-        			</div>
-        		</div>
+				<div class="modal fade" id="editAluno" tabindex="-1" role="dialog">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="editModalTitle"></h4>
+							</div>
+							<div class="modal-body">
+								<div class="row">
+									<span class="col-lg-1">
+										<label for="Email">Email</label>
+									</span>
+									<span class="col-lg-3 col-lg-offset-3">
+										<label for="Name" class="">Nome Completo</label>
+									</span>
+								</div>
+								<div class="row">
+									<span class="col-lg-4">
+										<input type="email" class="form-control" id="email">
+									</span>
+									<span class="col-lg-4">
+										<input type="text" class="form-control" id="name">
+									</span>
+								</div>
+								<br>
+								<div class="row">
+									<span class="col-lg-2">
+										<label for="Adress">Endereço</label>
+									</span>
+									<span class="col-lg-2 col-lg-offset-2">
+										<label for="Phone" class="">Telefone</label>
+									</span>
+									<span class="col-lg-1 col-lg-offset-2">
+										<label for="Age" class="">Idade</label>
+									</span>
+								</div>
+								<div class="row">
+									<span class="col-lg-4">
+										<input type="text" class="form-control" id="address">
+									</span>
+									<span class="col-lg-4">
+										<input type="text" class="form-control" id="phone">
+									</span>
+									<span class="col-lg-2">
+										<input type="number" class="form-control" id="age">
+									</span>
+								</div>
+								<br>
+							</div>
+							<div class="modal-footer">
+								<button type="button" onClick="showAlert('delete', 'alert-info')" class="btn btn-danger pull-left" data-dismiss="modal">Apagar Usuário</button>
+								<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+		        				<button type="button" onClick="showAlert('update', 'alert-success')" class="btn btn-primary" data-dismiss="modal">Salvar Modificações</button>
+							</div>
+						</div>
+					</div>
+				</div>
 
+				<!-- MODAL PROFESSOR -->
+
+				<div class="modal fade" id="editProfessor" tabindex="-1" role="dialog">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="editModalTitle"></h4>
+							</div>
+							<div class="modal-body">
+								<div class="row">
+									<span class="col-lg-1">
+										<label for="Email">Email</label>
+									</span>
+									<span class="col-lg-3 col-lg-offset-3">
+										<label for="Name" class="">Nome Completo</label>
+									</span>
+								</div>
+								<div class="row">
+									<span class="col-lg-4">
+										<input type="email" class="form-control" id="email">
+									</span>
+									<span class="col-lg-4">
+										<input type="text" class="form-control" id="name">
+									</span>
+								</div>
+								<br>
+								<div class="row">
+									<span class="col-lg-2">
+										<label for="Adress">Endereço</label>
+									</span>
+									<span class="col-lg-2 col-lg-offset-2">
+										<label for="Phone" class="">Telefone</label>
+									</span>
+									<span class="col-lg-1 col-lg-offset-2">
+										<label for="Age" class="">Idade</label>
+									</span>
+								</div>
+								<div class="row">
+									<span class="col-lg-4">
+										<input type="text" class="form-control" id="address">
+									</span>
+									<span class="col-lg-4">
+										<input type="text" class="form-control" id="phone">
+									</span>
+									<span class="col-lg-2">
+										<input type="number" class="form-control" id="age">
+									</span>
+								</div>
+								<br>
+								<br>
+								<div class="row">
+									<span class="col-lg-4 text-center">
+										<label for="Areas" class="">Areas de Conhecimento</label>
+									</span>
+									<span class="col-lg-6">
+										<input type="text" class="form-control" id="areas">
+									</span>
+								</div>
+								<br>
+							</div>
+							<div class="modal-footer">
+								<button type="button" onClick="showAlert('delete', 'alert-info')" class="btn btn-danger pull-left" data-dismiss="modal">Apagar Usuário</button>
+								<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+								<button type="button" onClick="showAlert('update', 'alert-success')" class="btn btn-primary" data-dismiss="modal">Salvar Modificações</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- MODAL RESPONSAVEL -->
+
+				<div class="modal fade" id="editResponsavel" tabindex="-1" role="dialog">
+					<div class="modal-dialog" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title" id="editModalTitle"></h4>
+							</div>
+							<div class="modal-body">
+								<div class="row">
+									<span class="col-lg-1">
+										<label for="Email">Email</label>
+									</span>
+									<span class="col-lg-3 col-lg-offset-3">
+										<label for="Name" class="">Nome Completo</label>
+									</span>
+								</div>
+								<div class="row">
+									<span class="col-lg-4">
+										<input type="email" class="form-control" id="email">
+									</span>
+									<span class="col-lg-4">
+										<input type="text" class="form-control" id="name">
+									</span>
+								</div>
+								<br>
+								<div class="row">
+									<span class="col-lg-2">
+										<label for="Adress">Endereço</label>
+									</span>
+									<span class="col-lg-2 col-lg-offset-2">
+										<label for="Phone" class="">Telefone</label>
+									</span>
+									<span class="col-lg-1 col-lg-offset-2">
+										<label for="Age" class="">Idade</label>
+									</span>
+								</div>
+								<div class="row">
+									<span class="col-lg-4">
+										<input type="text" class="form-control" id="address">
+									</span>
+									<span class="col-lg-4">
+										<input type="text" class="form-control" id="phone">
+									</span>
+									<span class="col-lg-2">
+										<input type="number" class="form-control" id="age">
+									</span>
+								</div>
+								<br>
+								<div class="row">
+									<span class="col-lg-4">
+										<label for="entes" class="">Matrícula do(s) Ente(s)</label>
+									</span>
+									<span class="col-lg-4">
+										<label for="AP" class="">Atuação Profissional</label>
+									</span>
+									<span class="col-lg-4">
+										<label for="OP" class="">Organização Profissional</label>
+									</span>
+								</div>
+								<div class="row">
+									<span class="col-lg-4">
+										<input type="text" class="form-control" id="entes">
+									</span>
+									<span class="col-lg-4">
+										<input type="text" class="form-control" id="op">
+									</span>
+									<span class="col-lg-4">
+										<input type="text" class="form-control" id="ap">
+									</span>
+								</div>
+								<br>
+							</div>
+							<div class="modal-footer">
+								<button type="button" onClick="showAlert('delete', 'alert-info')" class="btn btn-danger pull-left" data-dismiss="modal">Apagar Usuário</button>
+								<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+		        				<button type="button" onClick="showAlert('update', 'alert-success')" class="btn btn-primary" data-dismiss="modal">Salvar Modificações</button>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
-
 
 		<!-- FOOTER -->
 
