@@ -6,7 +6,7 @@
         <link href="../assets/css/bootstrap.css" rel="stylesheet">
         <link href="../assets/css/style.css" rel="stylesheet">
         <meta charset="utf-8">
-        <title>Vizualizar Turma</title>
+        <title>Vizualizar Presença</title>
     </head>
     <body>
         <!-- FIXED TOP NAVBAR -->
@@ -53,34 +53,162 @@
         <!-- /container-fluid -->
         </div><!-- /blue -->
         <div class="row">
-        <div class="col-md-7 col-md-offset-2">
-        <div class="container-fluid">
-            <div class="list-group">
-                <a class="list-group-item active" style="background-color:#00B3FE">
-                    <h4 class="list-group-item-heading">
-                        <center>Aulas</center>
-                    </h4>
-                </a>
-                <a class="list-group-item active" style="background-color:#384452">
-                    <p class="list-group-item-text">dd/mm/aaaa</p>
-                    <p class="list-group-item-text">status</p>
-                </a>
-                <a class="list-group-item active" style="background-color:#384452">
-                    <p class="list-group-item-text">12/01/2017</p>
-                    <p class="list-group-item-text">Presente</p>
-                </a>
-                <a class="list-group-item active" style="background-color:#384452">
-                    <p class="list-group-item-text">19/01/2017</p>
-                    <p class="list-group-item-text">Pesente</p>
-                </a>
-                <a class="list-group-item active" style="background-color:#384452">
-                    <p class="list-group-item-text">26/01/2017</p>
-                    <p class="list-group-item-text">Falta</p>
-                </a>
-            </div>
-            </div>
-          </div>
-        </div>
+			<div class="col-md-10 col-md-offset-1">
+				<div class="panel panel-default">
+					<div class="panel-body">
+						<div class="pull-left">
+							<h4>Filtros</h4>
+						</div>
+						<div class="pull-right">
+							<div class="btn-group">
+								<button type="button" class="btn btn-info btn-filter" data-target="segunda">Segunda</button>
+								<button type="button" class="btn btn-success btn-filter" data-target="terça">Terça</button>
+								<button type="button" class="btn btn-primary btn-filter" data-target="quarta">Quarta</button>
+								<button type="button" class="btn btn-info btn-filter" data-target="quinta">Quinta</button>
+								<button type="button" class="btn btn-success btn-filter" data-target="sexta">Sexta</button>
+								<button type="button" class="btn btn-primary btn-filter" data-target="sabado">Sabado</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div id=queryResult>
+
+				</div>
+				<div class="well">
+					<table id="usersTable" class="table">
+						<thead>
+							<tr data-status="all">
+								<th>Semanas</th>
+								<th>Presença/Falta</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr data-status="segunda" id="101257">
+								<td>01/02</td>
+								<td>Presente</td>
+							</tr>
+							<tr data-status="segunda" id="101257">
+								<td>08/02</td>
+								<td>Presente</td>
+							</tr>
+							<tr data-status="segunda" id="101257">
+								<td>15/02</td>
+								<td>Presente</td>
+							</tr>
+							<tr data-status="segunda" id="101257">
+								<td>22/02</td>
+								<td>Presente</td>
+							</tr>
+							<tr data-status="terça" id="101257">
+								<td>01/02</td>
+								<td>Presente</td>
+							</tr>
+							<tr data-status="terça" id="101257">
+								<td>08/02</td>
+								<td>Presente</td>
+							</tr>
+							<tr data-status="terça" id="101257">
+								<td>15/02</td>
+								<td>Presente</td>
+							</tr>
+							<tr data-status="terça" id="101257">
+								<td>22/02</td>
+								<td>Presente</td>
+							</tr>
+							<tr data-status="quarta" id="101257">
+								<td>01/02</td>
+								<td>Presente</td>
+								</tr>
+							<tr data-status="quarta" id="101257">
+								<td>08/02</td>
+								<td>Presente</td>
+							</tr>
+							<tr data-status="quarta" id="101257">
+								<td>15/02</td>
+								<td>Presente</td>
+							</tr>
+							<tr data-status="quarta" id="101257">
+								<td>22/02</td>
+								<td>Presente</td>
+							</tr>
+							<tr data-status="quinta" id="101257">
+								<td>01/02/02</td>
+								<td>Presente</td>
+							</tr>
+							<tr data-status="quinta" id="101257">
+								<td>08/02</td>
+								<td>Presente</td>
+							</tr>
+							<tr data-status="quinta" id="101257">
+								<td>15/02</td>
+								<td>Presente</td>
+							</tr>
+							<tr data-status="quinta" id="101257">
+								<td>22/02</td>
+								<td>Presente</td>
+							</tr>
+							<tr data-status="sexta" id="101257">
+								<td>01/02</td>
+								<td>Presente</td>
+							</tr>
+							<tr data-status="sexta" id="101257">
+								<td>08/02/02</td>
+								<td>Presente</td>
+							</tr>
+							<tr data-status="sexta" id="101257">
+								<td>15/02</td>
+								<td>Presente</td>
+							</tr>
+							<tr data-status="sexta" id="101257">
+								<td>22/02</td>
+								<td>Presente</td>
+							</tr>
+							<tr data-status="sabado" id="101257">
+								<td>01/02</td>
+								<td>Presente</td>
+							</tr>
+							<tr data-status="sabado" id="101257">
+								<td>08/02</td>
+								<td>Presente</td>
+							</tr>
+							<tr data-status="sabado" id="101257">
+								<td>15/02</td>
+								<td>Presente</td>
+							</tr>
+							<tr data-status="sabado" id="101257">
+								<td>22/02</td>
+								<td>Presente</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-3 col-md-offset-1">
+				<nav>
+					<ul class="pagination">
+						<li>
+							<a href="#" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+							</a>
+						</li>
+						<li><a href="#">1</a></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li><a href="#">5</a></li>
+						<li>
+							<a href="#" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+							</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<br>
+		</div>
         <!-- NEWS SECTION -->
         <!-- FOOTER -->
         <div id="footerwrap">
@@ -126,6 +254,7 @@
         <script src="../assets/js/jquery.prettyPhoto.js"></script>
         <script src="../assets/js/jquery.isotope.min.js"></script>
         <script src="../assets/js/secretaria/home.js"></script>
+		<script src="../assets/js/responsavel/presence-view.js"></script>
         <script src="../assets/js/custom.js"></script>
     </body>
 </html>
