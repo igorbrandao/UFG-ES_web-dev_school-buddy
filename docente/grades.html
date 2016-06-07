@@ -6,7 +6,7 @@
   <link href="../assets/css/bootstrap.css" rel="stylesheet">
   <link href="../assets/css/style.css" rel="stylesheet">
   <meta charset="utf-8">
-  <title>Home</title>
+  <title>Notas</title>
 </head>
 <body>
   <!-- FIXED TOP NAVBAR -->
@@ -53,9 +53,9 @@
   <!-- SERVICE LOGOS -->
   <div class="container">
     <div class="row">
-      <div>
+      <div class="col-md-10 col-md-offset-1">
         <div class="table-responsive">
-          <table class="table table-hover table-responsive">
+          <table id="gradesTable" class="table table-hover table-responsive">
             <thead class="thead-align">
               <tr>
                 <!-- NAO CENTRALIZA! -->
@@ -72,34 +72,34 @@
                 <td>100100</td>
                 <td>Aluno 1</td>
                 <td><input type="number" min="1" max="10" class="form-control" id="nota100100"></td>
-                <td><a id="resultado100100" class="btn btn-default"></a></td>
+                <td><a id="resultado100100" class="btn btn-default" data-container="body" data-toggle="popover"><i class="fa fa-question-circle-o fa-lg" aria-hidden="true"></i></a></td>
               </tr>
               <tr>
                 <td>2</td>
                 <td>100101</td>
                 <td>Aluno 2</td>
                 <td><input type="number" min="1" max="10" class="form-control" id="nota100101"></td>
-                <td><a id="resultado100101" class="btn btn-default"></a></td>
+                <td><a id="resultado100101" class="btn btn-default" data-container="body" data-toggle="popover"><i class="fa fa-question-circle-o fa-lg" aria-hidden="true"></i></a></td>
               </tr>
               <tr>
                 <td>3</td>
                 <td>100102</td>
                 <td>Aluno 3</td>
                 <td><input type="number" min="1" max="10" class="form-control" id="nota100102"></td>
-                <td><a id="resultado100102" class="btn btn-default"></a></td>
+                <td><a id="resultado100102" class="btn btn-default" data-container="body" data-toggle="popover"><i class="fa fa-question-circle-o fa-lg" aria-hidden="true"></i></a></td>
               </tr>
               <tr>
                 <td>4</td>
                 <td>100103</td>
                 <td>Aluno 4</td>
                 <td><input type="number" min="1" max="10" class="form-control" id="nota100103"></td>
-                <td><a id="resultado100103" class="btn btn-default"></a></td>
+                <td><a id="resultado100103" class="btn btn-default" data-container="body" data-toggle="popover"><i class="fa fa-question-circle-o fa-lg" aria-hidden="true"></i></a></td>
               </tr>
             </tbody>
           </table>
           <span >
-            <p><a href="detailedClass.html" class="btn btn-default"  style="float:left;">Voltar</a>
-              <a href="detailedClass.html" class="btn btn-theme" style="float:right;">Salvar</a>
+            <p><a href="releaseNotes.html" class="btn btn-default"  style="float:left;">Voltar</a>
+              <a href="releaseNotes.html" class="btn btn-theme" style="float:right;">Salvar</a>
             </p>
           </span>
         </div>
