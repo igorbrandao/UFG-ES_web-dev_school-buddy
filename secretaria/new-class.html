@@ -106,9 +106,22 @@
                     <div class="tab-content">
                         <div class="tab-pane active" role="tabpanel" id="step1">
                             <h4>Configuração Inicial</h4>
-        					<p>Crie uma turma para os alunos (máximo de 50) de sua escola. Turmas tem uma ou mais disciplinas (máximo de 10), cada uma delas ministrada por um professor especializado naquela área.</p>
+        					<p>Crie uma turma para os alunos (máximo de 50) de sua escola com uma ou mais disciplinas (máximo de 10).</p>
     						<div>
-
+								<div class="row">
+									<span class="col-lg-2 text-center">
+										<label for="TotalStudents" class="">Total de Alunos</label>
+									</span>
+									<span class="col-lg-1">
+										<input type="number" min="1" max="50" class="form-control" id="totalStudents">
+									</span>
+									<span class="col-lg-2 text-center">
+										<label for="TotalSubjects" class="">Quantidade de Disciplinas</label>
+									</span>
+									<span class="col-lg-1">
+										<input type="number" min="1" max="10" class="form-control" id="totalSubjects">
+									</span>
+								</div>
     						</div>
                             <ul class="list-inline pull-right">
                                 <li><button type="button" class="btn btn-primary btn-info-full next-step">Prosseguir</button></li>
@@ -116,8 +129,8 @@
                         </div>
                         <div class="tab-pane" role="tabpanel" id="step2">
                             <h4>Definição de Disciplinas e Professores</h4>
-        					<p>Defina quais disciplinas essa turma fornecerá e quais serão os professores que as ministrarão.</p>
-    						<div>
+        					<p>Defina quais disciplinas essa turma fornecerá e quais professores as ministrarão.</p>
+    						<div id="step2div">
 
     						</div>
                             <ul class="list-inline pull-right">
@@ -127,8 +140,8 @@
                         </div>
                         <div class="tab-pane" role="tabpanel" id="step3">
                             <h4>Adicionar Estudantes</h4>
-        					<p>Adicione alunos já cadastrados à esta turma usando o número de matrícula de cada um.</p>
-    						<div>
+        					<p>Adicione alunos já matriculados no sistema à esta turma usando o número de matrícula de cada um.</p>
+    						<div id="step3div">
 
     						</div>
                             <ul class="list-inline pull-right">
@@ -139,7 +152,7 @@
                         <div class="tab-pane" role="tabpanel" id="step4">
                             <h4>Revisão</h4>
         					<p>Confira os dados da turma que você está prestes a criar logo abaixo.</p>
-    						<div>
+    						<div id="step4div">
 
     						</div>
                             <ul class="list-inline pull-right">
@@ -156,6 +169,9 @@
                         </div>
                     </div>
                 </div>
+				<div id="invalidForm">
+
+				</div>
             </div>
         </div>
 
