@@ -7,18 +7,17 @@ $(document).ready(function () {
     $('.nav-tabs > li a[title]').tooltip();
 
     //Move o wizard
-    $('a[data-toggle="tab"]').on('show.bs.tab', function (e) {
+    $("a[data-toggle='tab']").on('show.bs.tab', function (e) {
         var $target = $(e.target);
         if ($target.parent().hasClass('disabled')) {
             return false;
         }
         else{
             currentStep = $(this).attr('href').substr(5);
-            console.log("currentStep changed by wizard: " + currentStep);
         }
     });
 
-    $(".next-step").click(function (e) {
+    $('.next-step').click(function (e) {
 
         if(canProceed()){
             var $active = $('.wizard .nav-tabs li.active');
@@ -26,25 +25,18 @@ $(document).ready(function () {
             nextTab($active);
 
             if(currentStep == 2){
-                console.log("$('#totalSubjects').val(): " + $('#totalSubjects').val());
-                console.log("$('#totalSubjects').attr('max'): " + $('#totalSubjects').attr('max'));
                 totalSubjects = normalize($('#totalSubjects').val(), $('#totalSubjects').attr('max'));
-                console.log("totalSubjects: " + totalSubjects);
-                console.log("building step 2 div.");
                 buildStep2Div();
-                console.log("finished building step 2 div.");
             }
             else if(currentStep == 3){
-                console.log("$('#totalStudents').val(): " + $('#totalStudents').val());
-                console.log("$('#totalStudents').attr('max'): " + $('#totalStudents').attr('max'));
                 totalStudents = normalize($('#totalStudents').val(), $('#totalStudents').attr('max'));
-                console.log("totalStudents: " + totalStudents);
-                console.log("building step 3 div.");
                 buildStep3Div();
-                console.log("finished building step 3 div.");
             }
             else if(currentStep == 4){
                 buildStep4Div();
+            }
+            else if(currentStep == 5){
+                $("a[data-toggle='tab']").parent().addClass('disabled');
             }
         }
         else{
@@ -52,20 +44,21 @@ $(document).ready(function () {
         }
 
     });
-    $(".prev-step").click(function (e) {
+    $('.prev-step').click(function (e) {
 
         var $active = $('.wizard .nav-tabs li.active');
         prevTab($active);
+        $active.next().addClass('disabled');
 
     });
 
 });
 
 function nextTab(elem) {
-    $(elem).next().find('a[data-toggle="tab"]').click();
+    $(elem).next().find("a[data-toggle='tab']").click();
 }
 function prevTab(elem) {
-    $(elem).prev().find('a[data-toggle="tab"]').click();
+    $(elem).prev().find("a[data-toggle='tab']").click();
 }
 
 function canProceed(){
@@ -81,9 +74,7 @@ function canProceed(){
 }
 
 function normalize(value, max){
-    console.log("value: " + value);
-    console.log("max: " + max);
-    if(value > max){
+    if(parseInt(value) > parseInt(max)){
         return max;
     }
     else if(value < 0){
@@ -104,57 +95,42 @@ function getRemainingItems(remaining){
 
 function buildStep2Div() {
 
-    var divContent = "";
+    var divContent = '';
     var loopCounter = 1;
-    var pageLineItems = 3;
-    var iterationSubjects;
     var remainingSubjects = totalSubjects;
+
+    divContent += "<div class='row'>";
 
     while (remainingSubjects > 0) {
 
-        if (remainingSubjects - pageLineItems >= 0) {
-            remainingSubjects -= pageLineItems;
-            iterationSubjects = pageLineItems;
-        }
-        else {
-            iterationSubjects = getRemainingItems(remainingSubjects);
-            remainingSubjects = 0;
-        }
+        divContent +=
+            "<div class='col-lg-3'>" +
+                "<div class='panel panel-default'>" +
+                "<div class='panel-heading'>Disciplina " + loopCounter + "</div>" +
+                    "<div class='panel-body'>" +
+                        "<label for='Subject'>Nome</label>" +
+                        "<br>" +
+                    	"<input type='text' class='form-control' id='subject" + loopCounter + "'>" +
+                        "<br>" +
+                        "<label for='Teacher'>Professor</label>" +
+                        "<br>" +
+                    	"<input type='number' max='999999' placeholder='Matrícula' class='form-control' id='teacher" + loopCounter + "'>" +
+                    "</div>" +
+                "</div>" +
+            "</div>";
 
-        divContent += "<div class='row'>";
-
-        for(i = 0; i < iterationSubjects; i++){
-            divContent +=
-                "<span class='col-lg-2 pull-left'>" +
-    			    "<label for='Subject'>Disciplina "+(loopCounter+i)+"</label>" +
-        		"</span>" +
-                "<span class='col-lg-2 pull-left'>" +
-        			"<label for='Teacher'>Professor "+(loopCounter+i)+"</label>" +
-        		"</span>";
-        }
-
-        divContent += "</div><div class='row'>";
-
-        for(i = 0; i < iterationSubjects; i++){
-            divContent +=
-                "<span class='col-lg-2'>" +
-        			"<input type='text' class='form-control' id='subject"+(loopCounter+i)+"'>" +
-        		"</span>" +
-        		"<span class='col-lg-2'>" +
-        			"<input type='number' placeholder='Matrícula' class='form-control' id='teacher"+(loopCounter+i)+"'>" +
-        		"</span>";
-        }
-
-        divContent += "</div><br>";
-        loopCounter += pageLineItems;
-
+        loopCounter++;
+        remainingSubjects--;
     }
-    $("#step2div").html(divContent);
+
+    divContent += "</div>";
+
+    $('#step2div').html(divContent);
 }
 
 function buildStep3Div(){
 
-    var divContent = "";
+    var divContent = '';
     var loopCounter = 1;
     var pageLineItems = 6;
     var iterationStudents;
@@ -185,7 +161,7 @@ function buildStep3Div(){
         for(i = 0; i < iterationStudents; i++){
             divContent +=
                 "<span class='col-lg-2'>" +
-                    "<input type='number' placeholder='Matrícula' class='form-control' id='teacher"+(loopCounter+i)+"'>" +
+                    "<input type='number' max='999999' placeholder='Matrícula' class='form-control' id='student"+(loopCounter+i)+"'>" +
                 "</span>";
         }
 
@@ -194,19 +170,64 @@ function buildStep3Div(){
 
     }
 
-    $("#step3div").html(divContent);
+    $('#step3div').html(divContent);
 }
 
 function buildStep4Div(){
-    //revisão
+
+	var divContent = '';
+	var subjectContent = '';
+	var studentContent = '';
+
+	var $subjectInputs = $('#step2 input');
+	var $studentInputs = $('#step3 input');
+
+	subjectContent += "<div class='row'>";
+
+    for (var i = 0, x = $subjectInputs.length; i < x; i+=2) {
+		subjectContent += "<div class='col-lg-3'><div class='well' style='margin: 10px;'>" + $subjectInputs[i].value  + " - [Nome do Professor] (" + $subjectInputs[i + 1].value  + ")</div></div>";
+    }
+
+	subjectContent += "</div>";
+	studentContent += "<div class='row'>";
+
+	for (var j = 0, y = $studentInputs.length; j < y; j++) {
+		studentContent += "<div class='col-lg-3'><div class='well' style='margin: 10px;'>" + $studentInputs[j].value  + " - [Nome do Aluno]</div></div>";
+    }
+
+	studentContent += "</div>";
+
+	divContent +=
+        "<div class='page-header'><h2><small>Nome da Turma</small> " + $('#className').val() + "<h2></div>" +
+        "<br>" +
+        "<div class='panel panel-info'>" +
+			"<div class='panel-heading'>" +
+			    "<h3 class='panel-title'>Disciplinas e Professores (" + totalSubjects + ")</h3>" +
+			"</div>" +
+			"<div class='panel-body'>" +
+			    "<div class='panel panel-default'>" + subjectContent + "</div>" +
+				"</div>" +
+			"</div>" +
+			"<div class='panel panel-info'>" +
+			    "<div class='panel-heading'>" +
+				"<h3 class='panel-title'>Alunos (" + totalStudents + ")</h3>" +
+			"</div>" +
+			"<div class='panel-body'>" +
+			    "<div class='panel panel-default'>" + studentContent + "</div>" +
+				"</div>" +
+			"</div>" +
+        "</div>";
+
+    $('#step4div').html(divContent);
+
 }
 
 function showAlert () {
     $('#invalidForm').html(
         "<div id='invalidAlert' class='alert alert-dismissible alert-warning' role='alert'><button type='button' class='close' data-dismiss='alert'aria-label='Close'><span aria-hidden='true'>&times;</span></button>Certifique-se de preencher todos os campos antes de prosseguir.</div>"
     );
-	$("#invalidAlert").fadeTo(3000, 500).slideUp(500, function(){
-   		$("#invalidAlert").alert('close');
+	$('#invalidAlert').fadeTo(3000, 500).slideUp(500, function(){
+   		$('#invalidAlert').alert('close');
 	});
-    userType = "";
+    userType = '';
 }

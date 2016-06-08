@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-|<html lang="pt-BR">
+<html lang="pt-BR">
 	<head>
 		<link rel="icon" type="image/png" sizes="32x32" href="../assets/img/favicon/favicon-32x32.png">
 		<link rel="manifest" href="../assets/img/favicon/manifest.json">
@@ -95,7 +95,7 @@
                                 </a>
                             </li>
                             <li role="presentation" class="disabled">
-                                <a href="#complete" data-toggle="tab" aria-controls="complete" role="tab" title="Completo">
+                                <a href="#step5" data-toggle="tab" aria-controls="step5" role="tab" title="Completo">
                                 <span class="round-tab">
                                 <i class="fa fa-check"></i>
                                 </span>
@@ -106,19 +106,29 @@
                     <div class="tab-content">
                         <div class="tab-pane active" role="tabpanel" id="step1">
                             <h4>Configuração Inicial</h4>
+							<br>
         					<p>Crie uma turma para os alunos (máximo de 50) de sua escola com uma ou mais disciplinas (máximo de 10).</p>
+							<br>
     						<div>
 								<div class="row">
-									<span class="col-lg-2 text-center">
+									<span class="col-lg-3 pull-left">
+										<label for="ClassName" class="">Nome da Turma</label>
+									</span>
+									<span class="col-lg-3 col-lg-offset-1 pull-left">
 										<label for="TotalStudents" class="">Total de Alunos</label>
 									</span>
-									<span class="col-lg-1">
-										<input type="number" min="1" max="50" class="form-control" id="totalStudents">
-									</span>
-									<span class="col-lg-2 text-center">
+									<span class="col-lg-3 pull-left">
 										<label for="TotalSubjects" class="">Quantidade de Disciplinas</label>
 									</span>
-									<span class="col-lg-1">
+								</div>
+								<div class="row">
+									<span class="col-lg-3">
+										<input type="text" class="form-control" id="className">
+									</span>
+									<span class="col-lg-1 col-lg-offset-1">
+										<input type="number" min="1" max="50" class="form-control" id="totalStudents">
+									</span>
+									<span class="col-lg-1 col-lg-offset-2">
 										<input type="number" min="1" max="10" class="form-control" id="totalSubjects">
 									</span>
 								</div>
@@ -129,7 +139,9 @@
                         </div>
                         <div class="tab-pane" role="tabpanel" id="step2">
                             <h4>Definição de Disciplinas e Professores</h4>
+							<br>
         					<p>Defina quais disciplinas essa turma fornecerá e quais professores as ministrarão.</p>
+							<br>
     						<div id="step2div">
 
     						</div>
@@ -139,8 +151,10 @@
                             </ul>
                         </div>
                         <div class="tab-pane" role="tabpanel" id="step3">
+							<br>
                             <h4>Adicionar Estudantes</h4>
         					<p>Adicione alunos já matriculados no sistema à esta turma usando o número de matrícula de cada um.</p>
+							<br>
     						<div id="step3div">
 
     						</div>
@@ -151,7 +165,9 @@
                         </div>
                         <div class="tab-pane" role="tabpanel" id="step4">
                             <h4>Revisão</h4>
+							<br>
         					<p>Confira os dados da turma que você está prestes a criar logo abaixo.</p>
+							<br>
     						<div id="step4div">
 
     						</div>
@@ -160,12 +176,13 @@
                                 <li><button type="button" class="btn btn-success btn-info-full next-step">Criar Nova Turma</button></li>
                             </ul>
                         </div>
-                        <div class="tab-pane" role="tabpanel" id="complete">
+                        <div class="tab-pane" role="tabpanel" id="step5">
                             <h3>Turma criada</h3>
+							<br>
                             <p>Uma nova turma com as informações fornecidas foi cadastrada.</p>
-                        </div>
-                        <div class="clearfix">
-
+							<br>
+							<button type="button" onclick="window.location.reload();" class="btn btn-theme btn pull-right">Criar Outra Turma</button>
+							<br>
                         </div>
                     </div>
                 </div>

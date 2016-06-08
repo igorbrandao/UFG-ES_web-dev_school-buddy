@@ -5,9 +5,9 @@ var userType;
 
 var alertTexts =
 {
-        "notFound": "Um usuário com o número de matrícula informado não existe.",
         "bug": "Sorry, bugs happen..."
 };
+
 $(document).ready(function () {
 
     $('.btn-filter').on('click', function () {
@@ -21,7 +21,7 @@ $(document).ready(function () {
     });
 
     $('#usersTable').delegate('.glyphicon-pencil', 'click', function () {
-        var editingRow = $('table#usersTable').find('tbody').find('#' + $(this).attr('id'));
+        var editingRow = $('table#usersTable').find('tbody').find('tr#' + $(this).attr('id'));
         userData =
         {
             //Todos valores vem do backend dinamicamente dependendo do tipo de usuário
@@ -45,7 +45,7 @@ $(document).ready(function () {
     });
 
     $('#usersTable').delegate('.glyphicon-remove', 'click', function () {
-        var deletingRow = $('table#usersTable').find('tbody').find('#' + $(this).attr('id'));
+        var deletingRow = $('table#usersTable').find('tbody').find('tr#' + $(this).attr('id'));
         userData =
         {
             "enrollment": $(deletingRow).find('td:eq(0)').html(),
@@ -76,16 +76,6 @@ function getUserType(){
     }
 }
 
-function showAlert (alertType, alertClass) {
-    $('#queryResult').html(
-        "<div id='queryAlert' class='alert alert-dismissible " + alertClass + "' role='alert'><button type='button' class='close' data-dismiss='alert'aria-label='Close'><span aria-hidden='true'>&times;</span></button>" + alertTexts[alertType] + "</div>"
-    );
-	$("#queryAlert").fadeTo(3000, 500).slideUp(500, function(){
-   		$("#queryAlert").alert('close');
-	});
-    userType = "";
-}
-
 function updateUser () {
     $('table#usersTable').find('tbody').find('#' + updatingUserID).html(
         "<td>" + userData.enrollment + "</td>" +
@@ -103,4 +93,14 @@ function updateUser () {
 function deleteUser () {
     $('table#usersTable').find('tbody').find('#' + deletingUserID).html("");
     showAlert("delete", "alert-info");
+}
+
+function showAlert (alertType, alertClass) {
+    $('#queryResult').html(
+        "<div id='queryAlert' class='alert alert-dismissible " + alertClass + "' role='alert'><button type='button' class='close' data-dismiss='alert'aria-label='Close'><span aria-hidden='true'>&times;</span></button>" + alertTexts[alertType] + "</div>"
+    );
+	$("#queryAlert").fadeTo(3000, 500).slideUp(500, function(){
+   		$("#queryAlert").alert('close');
+	});
+    userType = "";
 }
