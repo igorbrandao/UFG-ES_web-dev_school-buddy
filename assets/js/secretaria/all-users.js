@@ -5,7 +5,7 @@ var userType;
 
 var alertTexts =
 {
-        "bug": "Sorry, bugs happen..."
+    "bug": "Sorry, bugs happen..."
 };
 
 $(document).ready(function () {
@@ -14,8 +14,10 @@ $(document).ready(function () {
         var $target = $(this).data('target');
         if ($target != 'all') {
             $('.table tr').css('display', 'none');
+            $('.table tr[data-status=all]').fadeIn('slow');
             $('.table tr[data-status="' + $target + '"]').fadeIn('slow');
         } else {
+            $('.table tr[data-status=all]').fadeIn('slow');
             $('.table tr').css('display', 'none').fadeIn('slow');
         }
     });
