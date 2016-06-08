@@ -3,7 +3,7 @@ var popoverTexts =
 		"fa fa-question-circle-o fa-lg":" Indefinido! ",
 		"fa fa-thumbs-o-down fa-lg":" Reprovado! ",
 		"fa fa-thumbs-o-up fa-lg":" Aprovado! "
-};
+}
 
 $(document).ready(function(){
 

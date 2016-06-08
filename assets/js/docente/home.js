@@ -75,5 +75,6 @@
 
         $(window).on('resize', function () {
         setPortfolio();
+
     });
 })(jQuery);

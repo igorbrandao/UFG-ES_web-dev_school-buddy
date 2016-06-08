@@ -27,6 +27,10 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Docente <b class="caret"></b></a>
             <ul class="dropdown-menu">
               <li><a href="#">Visualizar turmas</a></li>
+              <li><a>Cadastrar Atividade/Trabalho</a></li>
+              <li><a href="newTest.html">Cadastrar Avaliação</a></li>
+              <li><a href="releaseNotes.html">Visualizar Cadastros</a></li>
+              <li><a href="releaseNotes.html#myModal">Lançar notas</a></li>
               <li class="divider"></li>
               <li><a href="../sign-in.html" >Sair  <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
             </ul>
@@ -89,8 +93,25 @@
         <div class="row">
           <span class="col-lg-12">
             <p><a href="detailedClass.html" class="btn btn-default"  style="float:left;"><i class="fa fa-arrow-left fa-lg" aria-hidden="true"></i> Voltar</a>
-              <a href="detailedClass.html" class="btn btn-theme" style="float:right;"><span class="glyphicon glyphicon-floppy-disk"></span> Cadastrar</a>
+              <a href="detailedClass.html" class="btn btn-theme" style="float:right;" data-toggle="modal" data-target="#myModal"><span class="glyphicon glyphicon-floppy-disk"></span> Cadastrar</a>
             </p>
+            <div id ="myModal" class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Confirmação</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>Você deseja salvar Alterações?</p>
+                  </div>
+                  <div class="modal-footer">
+                    <a type="button" class="btn btn-default" data-dismiss="modal">Cancelar</a>
+                    <a type="button" class="btn btn-primary" href="detailedClass.html" >Salvar</a>
+                  </div>
+                </div><!-- /.modal-content -->
+              </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
           </span>
         </div>
       </div>
