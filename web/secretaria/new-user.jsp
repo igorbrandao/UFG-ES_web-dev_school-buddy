@@ -73,7 +73,6 @@
 								<ul class="dropdown-menu">
 									<li><a onclick="switchForm('Aluno')" href="#">Aluno</a></li>
 									<li><a onclick="switchForm('Professor')" href="#">Professor</a></li>
-									<li><a onclick="switchForm('Responsavel')" href="#">Responsável</a></li>
 								</ul>
 							</span>
 							<span class="col-lg-6">
@@ -99,7 +98,7 @@
 										<h4 class="modal-title" id="myModalLabel">Usuário Criado!</h4>
 									</div>
 									<div class="modal-body">
-										<p>Essa conta está pronta para uso. Matrícula e senha foram enviados para o endereço de email informado no momento do cadastro.</p>
+										<p>Essa conta está pronta para uso. Para acessá-la, use a matrícula [num] e senha [str] na tela inicial.</p>
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-info" data-dismiss="modal">Entendi</button>
