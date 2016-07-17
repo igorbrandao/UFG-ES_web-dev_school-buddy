@@ -78,7 +78,7 @@
                 <td>Ensino médio</td>
                 <td>Geografia</td>
                 <td>35</td>
-                <td><a href="detailedclass.jsp"><i class="fa fa-plus-square-o fa-lg" aria-hidden="true"></i></a></td>
+                <td><a href="detailedClass.jsp"><i class="fa fa-plus-square-o fa-lg" aria-hidden="true"></i></a></td>
                 <!-- Botão ao final da linha para visualização de mais detalhes da turma-->
               </tr>
               <tr>
@@ -86,7 +86,7 @@
                 <td>Ensino Médio</td>
                 <td>História da Arte</td>
                 <td>30</td>
-                <td><a href="detailedclass.jsp"><i class="fa fa-plus-square-o fa-lg" aria-hidden="true"></i></a></td>
+                <td><a href="detailedClass.jsp"><i class="fa fa-plus-square-o fa-lg" aria-hidden="true"></i></a></td>
                 <!-- Botão ao final da linha para visualização de mais detalhes da turma-->
               </tr>
               <tr>
@@ -94,7 +94,7 @@
                 <td>Ensino Médio</td>
                 <td>Geografia</td>
                 <td>50</td>
-                <td><a href="detailedclass.jsp"><i class="fa fa-plus-square-o fa-lg" aria-hidden="true"></i></a></td>
+                <td><a href="detailedClass.jsp"><i class="fa fa-plus-square-o fa-lg" aria-hidden="true"></i></a></td>
                 <!-- Botão ao final da linha para visualização de mais detalhes da turma-->
               </tr>
               <tr>
@@ -102,7 +102,7 @@
                 <td>Ensino Médio</td>
                 <td>Geografia</td>
                 <td>50</td>
-                <td><a href="detailedclass.jsp"><i class="fa fa-plus-square-o fa-lg" aria-hidden="true"></i></a></td>
+                <td><a href="detailedClass.jsp"><i class="fa fa-plus-square-o fa-lg" aria-hidden="true"></i></a></td>
                 <!-- Botão ao final da linha para visualização de mais detalhes da turma-->
               </tr>
             </tbody>

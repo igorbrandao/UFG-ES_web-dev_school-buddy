@@ -3,7 +3,7 @@ var totalSubjects;
 var currentStep = 1;
 
 $(document).ready(function () {
-    //Initializa as tooltips
+    //Inicializa as tooltips
     $('.nav-tabs > li a[title]').tooltip();
 
     //Move o wizard

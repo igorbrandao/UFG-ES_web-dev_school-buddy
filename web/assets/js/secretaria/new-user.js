@@ -69,36 +69,6 @@ function specificForms(formValue){
 			"</span>" +
 		"</div>";
 	}
-	else if ( formValue === "Responsavel" ) {
-		return "" +
-		"<div class='row'>" +
-			"<span class='col-lg-2 text-center'>" +
-				"<label for='entes' class=''>Matrícula do(s) Ente(s)</label>" +
-			"</span>" +
-			"<span class='col-lg-6'>" +
-				"<input type='text' class='form-control' id='entes'>" +
-			"</span>" +
-		"</div>" +
-		"<br>" +
-		"<div class='row'>" +
-			"<span class='col-lg-2 text-center'>" +
-				"<label for='AP' class=''>Atuação Profissional</label>" +
-			"</span>" +
-			"<span class='col-lg-6'>" +
-				"<input type='text' class='form-control' id='ap'>" +
-			"</span>" +
-		"</div>" +
-		"<br>" +
-		"<div class='row'>" +
-			"<span class='col-lg-2 text-center'>" +
-				"<label for='OP' class=''>Organização Profissional</label>" +
-			"</span>" +
-			"<span class='col-lg-6'>" +
-				"<input type='text' class='form-control' id='op'>" +
-			"</span>" +
-		"</div>" +
-		"<br>";
-	}
 	else{
 		return "Um erro interno ocorreu";
 	}
