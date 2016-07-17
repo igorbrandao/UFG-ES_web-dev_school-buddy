@@ -5,7 +5,7 @@ CREATE TABLE users
   enrollment integer UNIQUE NOT NULL,
   user_type user_type_enum NOT NULL,
   pk_email character varying(50) NOT NULL,
-  password character varying(50) NOT NULL,
+  hash character varying(50) NOT NULL,
   name character varying(100) NOT NULL,
   address character varying(150) NOT NULL,
   phone character varying(15) NOT NULL,
@@ -79,7 +79,7 @@ INSERT INTO users VALUES (
   1,
   'admin',
   'admin@dummy.email',
-  'admin321',
+  '4acb4bc224acbbe3c2bfdcaa39a4324e', --admin321
   'Escola da Tia Renata',
   'SQN 215 Bloco J Nº 0 Ap. 107 Asa Norte Brasília Distrito Federal',
   '(61)1234-5678'

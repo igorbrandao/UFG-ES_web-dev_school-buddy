@@ -14,6 +14,23 @@ public class UserDAO {
 
     private static SessionFactory factory = new Configuration().configure().buildSessionFactory();
 
+    public boolean authenticate(String email, String password) {
+        User user = null;
+        Transaction transact = null;
+        try (Session session = factory.openSession()) {
+            transact = session.beginTransaction();
+            //TODO fix HQL >> user = (User) session.createQuery("from users where users.pk_email = email");
+            transact.commit();
+        } catch (HibernateException e) {
+            if (transact != null){
+                transact.rollback();
+            }
+            e.printStackTrace();
+        }
+        return user != null;
+
+    }
+
     public Integer newUser(Integer enrollment, String user_type, String email, String password, String name, String address, String phone){
 
         Transaction transact = null;
@@ -38,7 +55,7 @@ public class UserDAO {
         Transaction transact = null;
         try (Session session = factory.openSession()) {
             transact = session.beginTransaction();
-            for (Object aUser : session.createQuery("FROM users").list()) {
+            for (Object aUser : session.createQuery("FROM users").list()) { //TODO fix HQL <<
                 users.add((User)aUser);
             }
             transact.commit();
