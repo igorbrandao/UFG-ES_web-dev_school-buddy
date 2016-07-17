@@ -5,20 +5,11 @@ CREATE TABLE users
   enrollment integer UNIQUE NOT NULL,
   user_type user_type_enum NOT NULL,
   pk_email character varying(50) NOT NULL,
-  hashed_pass character varying(50) NOT NULL,
+  password character varying(50) NOT NULL,
   name character varying(100) NOT NULL,
-  age integer NOT NULL,
   address character varying(150) NOT NULL,
   phone character varying(15) NOT NULL,
   CONSTRAINT pkey_users PRIMARY KEY (pk_email)
-);
-
-CREATE TABLE subjects
-(
-  cpk_subject_name character varying(30) NOT NULL,
-  cpk_teacher integer NOT NULL,
-  CONSTRAINT pkey_subjects PRIMARY KEY (cpk_subject_name, cpk_teacher),
-  CONSTRAINT valid_cpk_teacher CHECK (cpk_teacher > 199999)
 );
 
 CREATE TABLE classes
@@ -42,9 +33,10 @@ CREATE TABLE classes_students
 CREATE TABLE classes_subjects
 (
   fk_class character varying(20) NOT NULL,
-  cfk_subject_name character varying(30) NOT NULL,
-  cfk_subject_teacher integer NOT NULL,
-  CONSTRAINT valid_cfk_subject_teacher CHECK (cfk_subject_teacher > 199999)
+  cpk_subject_name character varying(30) NOT NULL,
+  cpk_teacher integer NOT NULL,
+  CONSTRAINT pkey_subjects PRIMARY KEY (cpk_subject_name, cpk_teacher),
+  CONSTRAINT valid_cpk_teacher CHECK (cpk_teacher > 199999)
 );
 
 CREATE TABLE tasks
@@ -74,9 +66,8 @@ ALTER TABLE classes_students ADD CONSTRAINT fkey_classes_classes_students FOREIG
 ALTER TABLE classes_students ADD CONSTRAINT fkey_students_classes_students FOREIGN KEY (fk_student) REFERENCES users (enrollment);
 
 ALTER TABLE classes_subjects ADD CONSTRAINT fkey_classes_classes_subjects FOREIGN KEY (fk_class) REFERENCES classes (pk_class_name);
-ALTER TABLE classes_subjects ADD CONSTRAINT fkey_subjects_classes_subjects FOREIGN KEY (cfk_subject_name, cfk_subject_teacher) REFERENCES subjects (cpk_subject_name, cpk_teacher);
 
-ALTER TABLE tasks ADD CONSTRAINT fkey_subjects FOREIGN KEY (cfk_subject_name, cfk_subject_teacher) REFERENCES subjects (cpk_subject_name, cpk_teacher);
+ALTER TABLE tasks ADD CONSTRAINT fkey_subjects FOREIGN KEY (cfk_subject_name, cfk_subject_teacher) REFERENCES classes_subjects (cpk_subject_name, cpk_teacher);
 
 ALTER TABLE tasks_evaluations ADD CONSTRAINT fkey_tasks_tasks_evaluations FOREIGN KEY (fk_task) REFERENCES tasks (pk_task_number);
 ALTER TABLE tasks_evaluations ADD CONSTRAINT fkey_students_tasks_evaluations FOREIGN KEY (fk_student) REFERENCES users (enrollment);
@@ -90,7 +81,6 @@ INSERT INTO users VALUES (
   'admin@dummy.email',
   'admin321',
   'Escola da Tia Renata',
-  20,
   'SQN 215 Bloco J Nº 0 Ap. 107 Asa Norte Brasília Distrito Federal',
   '(61)1234-5678'
 );
