@@ -10,7 +10,7 @@ public class User {
     private String address;
     private String phone;
 
-    public User(int enrollment, String user_type, String email, String password, String name, String address, String phone) {
+    public User(Integer enrollment, String user_type, String email, String password, String name, String address, String phone) {
         this.enrollment = enrollment;
         this.user_type = user_type;
         this.email = email;

@@ -28,7 +28,7 @@ public class Task {
     }
 
     public Timestamp getStart_date() {
-        return start_date;
+        return new Timestamp(start_date.getTime());
     }
 
     public void setStart_date(Timestamp start_date) {
@@ -36,7 +36,7 @@ public class Task {
     }
 
     public Timestamp getEnd_date() {
-        return end_date;
+        return new Timestamp(end_date.getTime());
     }
 
     public void setEnd_date(Timestamp end_date) {
