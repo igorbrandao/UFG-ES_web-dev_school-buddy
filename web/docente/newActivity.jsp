@@ -47,7 +47,7 @@
     <div class="container-fluid">
       <div class="row">
         <div>
-          <h3>[Turma Selecionada] - Cadastro de Atividade/Trabalho</h3>
+          <h3>[Turma Selecionada] - [Disciplina] - Cadastro de Atividade/Trabalho</h3>
         </div>
       </div>
       <!-- /row -->
@@ -62,10 +62,38 @@
         <div class="row">
           <span class="form-group">
             <span class="col-lg-4">
-              <label for="disciplina">Disciplina</label>
+              <label for="titulo">Titulo</label>
             </span>
             <span class="col-lg-8">
-              <input type="text" class="form-control" id="disciplina">
+              <form>
+              <input action="" method=”post” type="text" class="form-control" name=”titulo” id="titulo">
+              </form>
+            </span>
+          </span>
+        </div>
+        <br>
+        <div class="row">
+          <span class="form-group">
+            <span class="col-lg-4">
+              <label for="dataInicio">Data de Inicio</label>
+            </span>
+            <span class="col-lg-8">
+              <form>
+                <input type="text" pattern="\d{1,2}/\d{1,2}/\d{4}" class="datepicker" name="dataInicio" id="dataInicio">
+              </form>
+            </span>
+          </span>
+        </div>
+        <br>
+        <div class="row">
+          <span class="form-group">
+            <span class="col-lg-4">
+              <label for="dataFim">Data Limite</label>
+            </span>
+            <span class="col-lg-8">
+              <form>
+                <input type="text" pattern="\d{1,2}/\d{1,2}/\d{4}" class="datepicker" name="dataFim" id="dataFim">
+              </form>
             </span>
           </span>
         </div>
@@ -76,7 +104,7 @@
               <label for="peso">Peso</label>
             </span>
             <span class="col-lg-8">
-              <input type="number" class="form-control" id="peso">
+              <input action="" method="post" type="number" class="form-control" name="peso" id="peso">
             </span>
           </span>
         </div>
@@ -84,10 +112,10 @@
         <div class="row">
           <span class="form-group">
             <span class="col-lg-4">
-              <label for="materia" >Matéria</label>
+              <label for="descricao" >Descricao</label>
             </span>
             <span class="col-lg-8">
-              <textarea class="form-control" rows="5" id="materia"></textarea>
+              <textarea action="" method="post" class="form-control" rows="5" name="descricao" id="descricao"></textarea>
             </span>
           </span>
         </div>

@@ -60,37 +60,52 @@
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
 				<div class="row">
-					<span class="form-group">
-						<span class="col-lg-4">
-							<label for="disciplina">Disciplina</label>
-						</span>
-						<span class="col-lg-8">
-							<input type="text" class="form-control" id="disciplina">
-						</span>
-					</span>
-				</div>
-				<br>
-				<div class="row">
-					<span class="form-group">
-						<span class="col-lg-4">
-							<label for="peso">Peso</label>
-						</span>
-						<span class="col-lg-8">
-							<input type="text" class="form-control" id="peso">
-						</span>
-					</span>
-				</div>
-				<br>
-				<div class="row">
-					<span class="form-group">
-						<span class="col-lg-4">
-							<label for="materia" >Matéria</label>
-						</span>
-						<span class="col-lg-8">
-							<textarea class="form-control" rows="5" id="materia"></textarea>
-						</span>
-					</span>
-				</div>
+          <span class="form-group">
+            <span class="col-lg-4">
+              <label for="titulo">Titulo</label>
+            </span>
+            <span class="col-lg-8">
+              <form>
+              <input action="" method=”post” type="text" class="form-control" name=”titulo” id="titulo">
+              </form>
+            </span>
+          </span>
+        </div>
+        <br>
+        <div class="row">
+          <span class="form-group">
+            <span class="col-lg-4">
+              <label for="dataAvaliacao">Data da Avaliacao</label>
+            </span>
+            <span class="col-lg-8">
+              <form>
+                <input type="text" pattern="\d{1,2}/\d{1,2}/\d{4}" class="datepicker" name="dataAvaliacao" id ="dataAvaliacao">
+              </form>
+            </span>
+          </span>
+        </div>
+        <br>
+        <div class="row">
+          <span class="form-group">
+            <span class="col-lg-4">
+              <label for="peso">Peso</label>
+            </span>
+            <span class="col-lg-8">
+              <input action="" method="post" type="number" class="form-control" name="peso" id="peso">
+            </span>
+          </span>
+        </div>
+        <br>
+        <div class="row">
+          <span class="form-group">
+            <span class="col-lg-4">
+              <label for="descricao" >Descricao</label>
+            </span>
+            <span class="col-lg-8">
+              <textarea action="" method="post" class="form-control" rows="5" name="descricao" id="descricao"></textarea>
+            </span>
+          </span>
+        </div>
 				<div class="row">
 					<span class="col-lg-12">
 						<p><a href="detailedClass.jsp" class="btn btn-default" style="float:left;"><i class="fa fa-arrow-left fa-lg" aria-hidden="true"></i> Voltar</a>
