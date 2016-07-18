@@ -67,9 +67,8 @@
 						</div>
 						<div class="pull-right">
 							<div class="btn-group">
-								<button type="button" class="btn btn-info btn-filter" data-target="student">Alunos</button>
-								<button type="button" class="btn btn-success btn-filter" data-target="teacher">Professores</button>
-								<button type="button" class="btn btn-primary btn-filter" data-target="parent">Responsáveis</button>
+								<button type="button" class="btn btn-info btn-filter" data-target="aluno">Alunos</button>
+								<button type="button" class="btn btn-success btn-filter" data-target="professor">Professores</button>
 								<button type="button" class="btn btn-default btn-filter" data-target="all">Todos</button>
 							</div>
 						</div>
@@ -89,66 +88,6 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr data-status="student" id="101257">
-								<td>101257</td>
-								<td>Aluno</td>
-								<td>Mark Thompson</td>
-								<td>email1@domain1.com</td>
-								<td>
-									<a href="#editAluno" role="button" data-toggle="modal"><i id="101257" class="glyphicon glyphicon-pencil"></i></a>
-									<a href="#deleteUser" role="button" data-toggle="modal"><i id="101257" class="glyphicon glyphicon-remove"></i></a>
-								</td>
-							</tr>
-							<tr data-status="student" id="101258">
-								<td>101258</td>
-								<td>Aluno</td>
-								<td>Ashley Jacobs</td>
-								<td>email2@domain2.com</td>
-								<td>
-									<a href="#editAluno" role="button" data-toggle="modal"><i id="101258" class="glyphicon glyphicon-pencil"></i></a>
-									<a href="#deleteUser" role="button" data-toggle="modal"><i id="101258" class="glyphicon glyphicon-remove"></i></a>
-								</td>
-							</tr>
-							<tr data-status="parent" id="301259">
-								<td>301259</td>
-								<td>Responsável</td>
-								<td>Audrey Ann</td>
-								<td>email3@domain3.com</td>
-								<td>
-									<a href="#editResponsavel" role="button" data-toggle="modal"><i id="301259" class="glyphicon glyphicon-pencil"></i></a>
-									<a href="#deleteUser" role="button" data-toggle="modal"><i id="301259" class="glyphicon glyphicon-remove"></i></a>
-								</td>
-							</tr>
-							<tr data-status="student" id="101260">
-								<td>101260</td>
-								<td>Aluno</td>
-								<td>John Robinson</td>
-								<td>email4@domain4.com</td>
-								<td>
-									<a href="#editAluno" role="button" data-toggle="modal"><i id="101260" class="glyphicon glyphicon-pencil"></i></a>
-									<a href="#deleteUser" role="button" data-toggle="modal"><i id="101260" class="glyphicon glyphicon-remove"></i></a>
-								</td>
-							</tr>
-							<tr data-status="teacher" id="201261">
-								<td>201261</td>
-								<td>Professor</td>
-								<td>Aaron Butler</td>
-								<td>email5@domain5.com</td>
-								<td>
-									<a href="#editProfessor" role="button" data-toggle="modal"><i id="201261" class="glyphicon glyphicon-pencil"></i></a>
-									<a href="#deleteUser" role="button" data-toggle="modal"><i id="201261" class="glyphicon glyphicon-remove"></i></a>
-								</td>
-							</tr>
-							<tr data-status="teacher" id="201262">
-								<td>201262</td>
-								<td>Professor</td>
-								<td>Chris Albert</td>
-								<td>email6@domain6.com</td>
-								<td>
-									<a href="#editProfessor" role="button" data-toggle="modal"><i id="201262" class="glyphicon glyphicon-pencil"></i></a>
-									<a href="#deleteUser" role="button" data-toggle="modal"><i id="201262" class="glyphicon glyphicon-remove"></i></a>
-								</td>
-							</tr>
 						</tbody>
 					</table>
 				</div>
@@ -159,21 +98,7 @@
 			<div class="col-md-3 col-md-offset-1">
 				<nav>
 					<ul class="pagination">
-						<li>
-							<a href="#" aria-label="Previous">
-							<span aria-hidden="true">&laquo;</span>
-							</a>
-						</li>
-						<li><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li><a href="#">5</a></li>
-						<li>
-							<a href="#" aria-label="Next">
-							<span aria-hidden="true">&raquo;</span>
-							</a>
-						</li>
+
 					</ul>
 				</nav>
 			</div>
@@ -182,51 +107,45 @@
 
 		<!-- MODAL ALUNO -->
 
-		<div class="modal fade" id="editAluno" tabindex="-1" role="dialog">
+		<div class="modal fade" id="edit-aluno" tabindex="-1" role="dialog">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="editModalTitle"></h4>
+						<h4 class="modal-title" id="editModalTitle-aluno"></h4>
 					</div>
 					<div class="modal-body">
 						<div class="row">
 							<span class="col-lg-1">
-								<label for="Email">Email</label>
+								<label for="Email-aluno">Email</label>
 							</span>
 							<span class="col-lg-3 col-lg-offset-3">
-								<label for="Name" class="">Nome Completo</label>
+								<label for="Name-aluno" class="">Nome Completo</label>
 							</span>
 						</div>
 						<div class="row">
 							<span class="col-lg-4">
-								<input type="email" class="form-control" id="email">
+								<input type="email" class="form-control" id="email-aluno">
 							</span>
 							<span class="col-lg-4">
-								<input type="text" class="form-control" id="name">
+								<input type="text" class="form-control" id="name-aluno">
 							</span>
 						</div>
 						<br>
 						<div class="row">
 							<span class="col-lg-2">
-								<label for="Address">Endereço</label>
+								<label for="Address-aluno">Endereço</label>
 							</span>
 							<span class="col-lg-2 col-lg-offset-2">
-								<label for="Phone" class="">Telefone</label>
-							</span>
-							<span class="col-lg-1 col-lg-offset-2">
-								<label for="Age" class="">Idade</label>
+								<label for="Phone-aluno" class="">Telefone</label>
 							</span>
 						</div>
 						<div class="row">
 							<span class="col-lg-4">
-								<input type="text" class="form-control" id="address">
+								<input type="text" class="form-control" id="address-aluno">
 							</span>
 							<span class="col-lg-4">
-								<input type="text" class="form-control" id="phone">
-							</span>
-							<span class="col-lg-2">
-								<input type="number" class="form-control" id="age">
+								<input type="text" class="form-control" id="phone-aluno">
 							</span>
 						</div>
 						<br>
@@ -241,51 +160,45 @@
 
 		<!-- MODAL PROFESSOR -->
 
-		<div class="modal fade" id="editProfessor" tabindex="-1" role="dialog">
+		<div class="modal fade" id="edit-professor" tabindex="-1" role="dialog">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="editModalTitle"></h4>
+						<h4 class="modal-title" id="editModalTitle-professor"></h4>
 					</div>
 					<div class="modal-body">
 						<div class="row">
 							<span class="col-lg-1">
-								<label for="Email">Email</label>
+								<label for="Email-professor">Email</label>
 							</span>
 							<span class="col-lg-3 col-lg-offset-3">
-								<label for="Name" class="">Nome Completo</label>
+								<label for="Name-professor" class="">Nome Completo</label>
 							</span>
 						</div>
 						<div class="row">
 							<span class="col-lg-4">
-								<input type="email" class="form-control" id="email">
+								<input type="email" class="form-control" id="email-professor">
 							</span>
 							<span class="col-lg-4">
-								<input type="text" class="form-control" id="name">
+								<input type="text" class="form-control" id="name-professor">
 							</span>
 						</div>
 						<br>
 						<div class="row">
 							<span class="col-lg-2">
-								<label for="Address">Endereço</label>
+								<label for="Address-professor">Endereço</label>
 							</span>
 							<span class="col-lg-2 col-lg-offset-2">
-								<label for="Phone" class="">Telefone</label>
-							</span>
-							<span class="col-lg-1 col-lg-offset-2">
-								<label for="Age" class="">Idade</label>
+								<label for="Phone-professor" class="">Telefone</label>
 							</span>
 						</div>
 						<div class="row">
 							<span class="col-lg-4">
-								<input type="text" class="form-control" id="address">
+								<input type="text" class="form-control" id="address-professor">
 							</span>
 							<span class="col-lg-4">
-								<input type="text" class="form-control" id="phone">
-							</span>
-							<span class="col-lg-2">
-								<input type="number" class="form-control" id="age">
+								<input type="text" class="form-control" id="phone-professor">
 							</span>
 						</div>
 						<br>
@@ -303,88 +216,6 @@
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 						<button type="button" onClick="updateUser()" class="btn btn-primary" data-dismiss="modal">Salvar Modificações</button>
-					</div>
-				</div>
-			</div>
-		</div>
-
-		<!-- MODAL RESPONSAVEL -->
-
-		<div class="modal fade" id="editResponsavel" tabindex="-1" role="dialog">
-			<div class="modal-dialog" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="editModalTitle"></h4>
-					</div>
-					<div class="modal-body">
-						<div class="row">
-							<span class="col-lg-1">
-								<label for="Email">Email</label>
-							</span>
-							<span class="col-lg-3 col-lg-offset-3">
-								<label for="Name" class="">Nome Completo</label>
-							</span>
-						</div>
-						<div class="row">
-							<span class="col-lg-4">
-								<input type="email" class="form-control" id="email">
-							</span>
-							<span class="col-lg-4">
-								<input type="text" class="form-control" id="name">
-							</span>
-						</div>
-						<br>
-						<div class="row">
-							<span class="col-lg-2">
-								<label for="Address">Endereço</label>
-							</span>
-							<span class="col-lg-2 col-lg-offset-2">
-								<label for="Phone" class="">Telefone</label>
-							</span>
-							<span class="col-lg-1 col-lg-offset-2">
-								<label for="Age" class="">Idade</label>
-							</span>
-						</div>
-						<div class="row">
-							<span class="col-lg-4">
-								<input type="text" class="form-control" id="address">
-							</span>
-							<span class="col-lg-4">
-								<input type="text" class="form-control" id="phone">
-							</span>
-							<span class="col-lg-2">
-								<input type="number" class="form-control" id="age">
-							</span>
-						</div>
-						<br>
-						<div class="row">
-							<span class="col-lg-4">
-								<label for="entes" class="">Matrícula do(s) Ente(s)</label>
-							</span>
-							<span class="col-lg-4">
-								<label for="AP" class="">Atuação Profissional</label>
-							</span>
-							<span class="col-lg-4">
-								<label for="OP" class="">Organização Profissional</label>
-							</span>
-						</div>
-						<div class="row">
-							<span class="col-lg-4">
-								<input type="text" class="form-control" id="entes">
-							</span>
-							<span class="col-lg-4">
-								<input type="text" class="form-control" id="op">
-							</span>
-							<span class="col-lg-4">
-								<input type="text" class="form-control" id="ap">
-							</span>
-						</div>
-						<br>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-        				<button type="button" onClick="updateUser()" class="btn btn-primary" data-dismiss="modal">Salvar Modificações</button>
 					</div>
 				</div>
 			</div>

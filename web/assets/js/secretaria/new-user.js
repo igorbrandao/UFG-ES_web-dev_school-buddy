@@ -73,3 +73,52 @@ function specificForms(formValue){
 		return "Um erro interno ocorreu";
 	}
 }
+
+function createUser() {
+
+    var map = {};
+    $(".form-control").each(function() {
+        map[$(this).attr("id")] = $(this).val();
+    });
+
+    function checkEmptyFields(map) {
+        for (var m in map){
+            for (var i = 0; i < map[m].length; i++){
+                if(!map[m][i] || map[m][i] === ""){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    if (checkEmptyFields(map)) {
+		showAlert("alert-warning", "emptyFields");
+		return;
+	}
+
+    var paramsString = JSON.stringify(map);
+
+    //TODO: FIX UGLY GET
+	$.ajax({
+		dataType: "text",
+		url: "ServletCreateUser?" +
+		"type=" + map["type"] +
+        "&params=" + paramsString,
+		success: function () {
+			showAlert("alert-success", "createdGame");
+		}
+	});
+
+}
+
+function showAlert (alertClass, alertMessage) {
+
+	$('#alertMessage').html(
+		"<div id='alertDiv' class='alert alert-dismissible " + alertClass + "' role='alert'><button type='button' class='close' data-dismiss='alert'aria-label='Close'><span aria-hidden='true'>&times;</span></button>" + alertMessage + "</div>"
+	);
+	$("#alertDiv").fadeTo(3000, 500).slideUp(500, function(){
+		$("#alertDiv").alert('close');
+	});
+
+}

@@ -1,7 +1,6 @@
-var updatingUserID;
-var deletingUserID;
-var userModal;
+var currentPage;
 var userType;
+var users;
 
 var alertTexts =
 {
@@ -9,6 +8,9 @@ var alertTexts =
 };
 
 $(document).ready(function () {
+
+    currentPage = 1;
+    users = [];
 
     $('.btn-filter').on('click', function () {
         var $target = $(this).data('target');
@@ -24,38 +26,21 @@ $(document).ready(function () {
 
     $('#usersTable').delegate('.glyphicon-pencil', 'click', function () {
         var editingRow = $('table#usersTable').find('tbody').find('tr#' + $(this).attr('id'));
-        userData =
-        {
-            //Todos valores vem do backend dinamicamente dependendo do tipo de usuário
-            "enrollment": $(editingRow).find('td:eq(0)').html(),
-            "name": $(editingRow).find('td:eq(2)').html(),
-            "email": $(editingRow).find('td:eq(3)').html(),
-            "address": "AVENIDA 85, 759 - QD F-24 - LT 91 - ED. FELICIDADE / SETOR SUL - GOIÂNIA CEP: 74080-010",
-            "phone": "(62)98712-3840",
-            "age": "19"
-        };
-        userType = getUserType();
-        userModal = $('#edit' + userType);
-        updatingUserID = userData.enrollment;
+        userData = users[editingRow];
+        userType = userData.type;
         alertTexts.update = "Os dados do " + userType + " de matrícula " + userData.enrollment + " foram alterados.";
-        $(userModal).find("#editModalTitle").html("Editando " + userType + " " + userData.enrollment + ".");
-        for (i = 0; i < Object.keys(userData).length; i++){
+        $('#editModalTitle-' + userType).html("Editando " + userType + " " + userData.enrollment + ".");
+        for (var i = 0; i < Object.keys(userData).length; i++){
             var currentKey = Object.keys(userData)[i];
-            $("input#" + currentKey).val(userData[currentKey]);
+            $("input#" + userType + "-" + currentKey).val(userData[currentKey]);
         }
         //$("#formID").val(userData.fieldValue);
     });
 
     $('#usersTable').delegate('.glyphicon-remove', 'click', function () {
         var deletingRow = $('table#usersTable').find('tbody').find('tr#' + $(this).attr('id'));
-        userData =
-        {
-            "enrollment": $(deletingRow).find('td:eq(0)').html(),
-            "name": $(deletingRow).find('td:eq(2)').html(),
-            "email": $(deletingRow).find('td:eq(3)').html(),
-        };
-        userType = getUserType();
-        deletingUserID = userData.enrollment;
+        userData = users[deletingRow];
+        userType = userData.type;
         alertTexts.delete = "O " + userType + " de matrícula " + userData.enrollment + " foi apagado.";
         $("#deleteModalTitle").html("Atenção! Deletando Usuário " + userData.enrollment + ".");
         $("#deletingUserInfo").html("<b>Nome: </b>" + userData.name + "<br>" + "<b>Email: </b>" + userData.email + ".");
@@ -63,37 +48,15 @@ $(document).ready(function () {
 
  });
 
-function getUserType(){
-    if (userData.enrollment.substr(0,2) == 10) {
-        return "Aluno";
-    }
-    else if (userData.enrollment.substr(0,2) == 20) {
-        return "Professor";
-    }
-    else if (userData.enrollment.substr(0,2) == 30) {
-        return "Responsavel";
-    }
-    else {
-        showAlert("bug", "alert-danger");
-    }
-}
-
 function updateUser () {
-    $('table#usersTable').find('tbody').find('#' + updatingUserID).html(
-        "<td>" + userData.enrollment + "</td>" +
-        "<td>" + userType + "</td>" +
-        "<td>" + $(userModal).find("input#name").val() + "</td>" +
-        "<td>" + $(userModal).find("input#email").val() + "</td>" +
-        "<td>" +
-            "<a href='#edit" + userType + "' role='button' data-toggle='modal'><i id='" + updatingUserID + "' class='glyphicon glyphicon-pencil'></i></a>" +
-            "<a href='#deleteUser' role='button' data-toggle='modal'><i id='" + updatingUserID + "' class='glyphicon glyphicon-remove'></i></a>" +
-        "</td>"
-    );
+
+    listUsers(currentPage);
     showAlert("update", "alert-success");
 }
 
 function deleteUser () {
-    $('table#usersTable').find('tbody').find('#' + deletingUserID).html("");
+
+    listUsers(currentPage);
     showAlert("delete", "alert-info");
 }
 
@@ -105,4 +68,119 @@ function showAlert (alertType, alertClass) {
    		$("#queryAlert").alert('close');
 	});
     userType = "";
+}
+
+
+function buildPagination(usersPageCount) {
+
+    var disable;
+    var active;
+
+    if(currentPage-1 === 0){disable = "class='disabled'";} else{disable = "";}
+    var paginationHTML = "" +
+        "<li>" +
+            "<a "+disable+" href='#' onclick='listUsers("+(currentPage-1)+")' aria-label='Previous'>" +
+                "<span aria-hidden='true'>&laquo;</span>" +
+            "</a>" +
+        "</li>";
+
+    for (var i = 1; i <= usersPageCount; i++) {
+        if(i === currentPage){active = "class='active'";} else{active = "";}
+        paginationHTML += "<li><a "+active+" href='#' onclick='listUsers("+i+")'>" + i + "</a></li>";
+    }
+
+    if(currentPage+1 === usersPageCount){disable = "class='disabled'";} else{disable = "";}
+    paginationHTML += "" +
+        "<li>" +
+            "<a "+disable+" href='#' onclick='listUsers("+(currentPage+1)+")' aria-label='Next'>" +
+                "<span aria-hidden='true'>&raquo;</span>" +
+            "</a>" +
+        "</li>";
+
+    $('.pagination').html(paginationHTML);
+
+}
+
+function listUsers(pageNumber) {
+
+    if(!pageNumber){
+        pageNumber = currentPage;
+    }
+
+    $.getJSON("ServletCountUsers", {}, function (data) {
+        buildPagination(data);
+    });
+
+    $.getJSON("ServletListUsers?page=" + pageNumber, {}, function (data) {
+        users = data;
+
+        var tableHTML = "";
+
+        for (var x = 0; x < users.length; x++) {
+
+            var currentUser = users[x];
+
+            tableHTML += "" +
+                "<tr data-status='" + currentUser.type + "' id='"+x+"'> " +
+                    "<td>" + currentUser.enrollment + "</td>" +
+                    "<td>" + currentUser.type + "</td>" +
+                    "<td>" + currentUser.name + "</td>" +
+                    "<td>" + currentUser.email + "</td>" +
+                    "<td>" +
+                        "<a href='#editAluno' role='button' data-toggle='modal'><i id='editUser"+x+"' class='glyphicon glyphicon-pencil'></i></a>" +
+                        "<a href='#deleteUser' role='button' data-toggle='modal'><i id='deleteUser"+x+"' class='glyphicon glyphicon-remove'></i></a>" +
+                    "</td>" +
+                "</tr>";
+
+            console.log(users[x]);
+        }
+
+        $('table#usersTable').find('tbody').html(tableHTML);
+
+    });
+
+}
+
+//TODO: Refactor to fit context.
+
+function updateGame() {
+
+    var newTitle = $('#newTitle').val();
+    var newCategory = $('#newCategory').val();
+    var newPrice = $('#newPrice').val();
+
+    if (newTitle === "" || newCategory === "" || newPrice === "") {
+        showAlert("alert-warning", "emptyUpdateFields");
+        return;
+    }
+    if (parseInt(newPrice) > 0){
+        showAlert("alert-warning", "negativeUpdatePrice");
+        return;
+    }
+    $.ajax({
+        dataType: "text",
+        url: "UpdateGame?" +
+        "newTitle=" + newTitle +
+        "&newCategory=" + newCategory +
+        "&newPrice=" + newPrice +
+        "&updatingGameId=" + updatingGameId,
+        success: function () {
+            showAlert("alert-success", "updatedGame");
+            updatingGameId = {};
+        }
+    });
+}
+
+function deleteGame() {
+
+    $.ajax({
+        dataType: "text",
+        url: "DeleteGame?" +
+        "&deletingGameId=" + deletingGameId,
+        success: function () {
+            showAlert("alert-info", "deletedGame");
+            deletingGameId = {};
+        }
+    });
+
 }
