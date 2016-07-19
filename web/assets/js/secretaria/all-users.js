@@ -28,7 +28,7 @@ $(document).ready(function () {
         var editingRow = $('table#usersTable').find('tbody').find('tr#' + $(this).attr('id'));
         userData = users[editingRow];
         userType = userData.type;
-        alertTexts.update = "Os dados do " + userType + " de matrícula " + userData.enrollment + " foram alterados.";
+        alertTexts.updated = "Os dados do " + userType + " de matrícula " + userData.enrollment + " foram alterados.";
         $('#editModalTitle-' + userType).html("Editando " + userType + " " + userData.enrollment + ".");
         for (var i = 0; i < Object.keys(userData).length; i++){
             var currentKey = Object.keys(userData)[i];
@@ -41,35 +41,87 @@ $(document).ready(function () {
         var deletingRow = $('table#usersTable').find('tbody').find('tr#' + $(this).attr('id'));
         userData = users[deletingRow];
         userType = userData.type;
-        alertTexts.delete = "O " + userType + " de matrícula " + userData.enrollment + " foi apagado.";
+        alertTexts.deleted = "O " + userType + " de matrícula " + userData.enrollment + " foi apagado.";
         $("#deleteModalTitle").html("Atenção! Deletando Usuário " + userData.enrollment + ".");
         $("#deletingUserInfo").html("<b>Nome: </b>" + userData.name + "<br>" + "<b>Email: </b>" + userData.email + ".");
     });
+
+    listUsers(currentPage);
 
  });
 
 function updateUser () {
 
-    listUsers(currentPage);
-    showAlert("update", "alert-success");
+    var map = {};
+    $(".form-control").each(function() {
+        map[$(this).attr("id")] = $(this).val();
+    });
+
+    function checkEmptyFields(map) {
+        for (var m in map){
+            for (var i = 0; i < map[m].length; i++){
+                if(!map[m][i] || map[m][i] === ""){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    if (checkEmptyFields(map)) {
+        showAlert("alert-warning", "emptyFields");
+        return;
+    }
+
+    var paramsString = JSON.stringify(map);
+
+    var request = $.ajax({
+        type: "POST",
+        url: "ServletUpdateUser",
+        data: paramsString,
+        dataType: "text"
+    });
+
+    request.done(function (){
+        listUsers(currentPage);
+        showAlert("updated", "alert-success");
+    });
+
+    request.fail(function (textStatus, errorThrown){
+        showAlert("", "alert-danger", "The following error occurred: " + textStatus, errorThrown);
+    });
+
+    request.always(function (){
+        //Something
+    });
+
+    event.preventDefault();
 }
 
 function deleteUser () {
 
-    listUsers(currentPage);
-    showAlert("delete", "alert-info");
-}
+    var request = $.ajax({
+        type: "POST",
+        url: "ServletDeleteUser",
+        data: "enrollment: " + userData.enrollment,
+        dataType: "text"
+    });
 
-function showAlert (alertType, alertClass) {
-    $('#queryResult').html(
-        "<div id='queryAlert' class='alert alert-dismissible " + alertClass + "' role='alert'><button type='button' class='close' data-dismiss='alert'aria-label='Close'><span aria-hidden='true'>&times;</span></button>" + alertTexts[alertType] + "</div>"
-    );
-	$("#queryAlert").fadeTo(3000, 500).slideUp(500, function(){
-   		$("#queryAlert").alert('close');
-	});
-    userType = "";
-}
+    request.done(function (){
+        listUsers(currentPage);
+        showAlert("deleted", "alert-info");
+    });
 
+    request.fail(function (textStatus, errorThrown){
+        showAlert("", "alert-danger", "The following error occurred: " + textStatus, errorThrown);
+    });
+
+    request.always(function (){
+        //Something
+    });
+
+    event.preventDefault();
+}
 
 function buildPagination(usersPageCount) {
 
@@ -79,7 +131,7 @@ function buildPagination(usersPageCount) {
     if(currentPage-1 === 0){disable = "class='disabled'";} else{disable = "";}
     var paginationHTML = "" +
         "<li>" +
-            "<a "+disable+" href='#' onclick='listUsers("+(currentPage-1)+")' aria-label='Previous'>" +
+            "<a "+disable+" href='#' onclick='listUsers("+(++currentPage)+")' aria-label='Previous'>" +
                 "<span aria-hidden='true'>&laquo;</span>" +
             "</a>" +
         "</li>";
@@ -92,7 +144,7 @@ function buildPagination(usersPageCount) {
     if(currentPage+1 === usersPageCount){disable = "class='disabled'";} else{disable = "";}
     paginationHTML += "" +
         "<li>" +
-            "<a "+disable+" href='#' onclick='listUsers("+(currentPage+1)+")' aria-label='Next'>" +
+            "<a "+disable+" href='#' onclick='listUsers("+(--currentPage)+")' aria-label='Next'>" +
                 "<span aria-hidden='true'>&raquo;</span>" +
             "</a>" +
         "</li>";
@@ -103,15 +155,12 @@ function buildPagination(usersPageCount) {
 
 function listUsers(pageNumber) {
 
-    if(!pageNumber){
-        pageNumber = currentPage;
-    }
-
     $.getJSON("ServletCountUsers", {}, function (data) {
         buildPagination(data);
     });
 
     $.getJSON("ServletListUsers?page=" + pageNumber, {}, function (data) {
+        
         users = data;
 
         var tableHTML = "";
@@ -141,46 +190,18 @@ function listUsers(pageNumber) {
 
 }
 
-//TODO: Refactor to fit context.
+function showAlert (alertType, alertClass, message) {
 
-function updateGame() {
-
-    var newTitle = $('#newTitle').val();
-    var newCategory = $('#newCategory').val();
-    var newPrice = $('#newPrice').val();
-
-    if (newTitle === "" || newCategory === "" || newPrice === "") {
-        showAlert("alert-warning", "emptyUpdateFields");
-        return;
+    if(!message){
+        message = "";
     }
-    if (parseInt(newPrice) > 0){
-        showAlert("alert-warning", "negativeUpdatePrice");
-        return;
-    }
-    $.ajax({
-        dataType: "text",
-        url: "UpdateGame?" +
-        "newTitle=" + newTitle +
-        "&newCategory=" + newCategory +
-        "&newPrice=" + newPrice +
-        "&updatingGameId=" + updatingGameId,
-        success: function () {
-            showAlert("alert-success", "updatedGame");
-            updatingGameId = {};
-        }
+
+    $('#queryResult').html(
+        "<div id='queryAlert' class='alert alert-dismissible " + alertClass + "' role='alert'><button type='button' class='close' data-dismiss='alert'aria-label='Close'><span aria-hidden='true'>&times;</span></button>" + alertTexts[alertType] + " " + message + "</div>"
+    );
+    $("#queryAlert").fadeTo(3000, 500).slideUp(500, function(){
+        $("#queryAlert").alert('close');
     });
-}
-
-function deleteGame() {
-
-    $.ajax({
-        dataType: "text",
-        url: "DeleteGame?" +
-        "&deletingGameId=" + deletingGameId,
-        success: function () {
-            showAlert("alert-info", "deletedGame");
-            deletingGameId = {};
-        }
-    });
-
+    userType = "";
+    
 }

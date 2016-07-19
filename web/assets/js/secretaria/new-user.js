@@ -99,16 +99,26 @@ function createUser() {
 
     var paramsString = JSON.stringify(map);
 
-    //TODO: FIX UGLY GET
-	$.ajax({
-		dataType: "text",
-		url: "ServletCreateUser?" +
-		"type=" + map["type"] +
-        "&params=" + paramsString,
-		success: function () {
-			showAlert("alert-success", "createdGame");
-		}
+	var request = $.ajax({
+		type: "POST",
+		url: "ServletUpdateUser",
+		data: paramsString,
+		dataType: "text"
 	});
+
+	request.done(function (){
+		showAlert("alert-success", "The user was created!");
+	});
+
+	request.fail(function (textStatus, errorThrown){
+		showAlert("alert-danger", "The following error occurred: " + textStatus, errorThrown);
+	});
+
+	request.always(function (){
+		//Something
+	});
+
+	event.preventDefault();
 
 }
 
