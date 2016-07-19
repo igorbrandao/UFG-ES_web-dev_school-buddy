@@ -10,8 +10,8 @@ import java.io.IOException;
 /**
  * Created by Rafa on 17/07/2016.
  */
-@WebServlet("/AddActivity")
-public class ServletAddActivity extends HttpServlet {
+@WebServlet("/AddTask")
+public class ServletAddTask extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);

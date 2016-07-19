@@ -1,11 +1,20 @@
 package entity;
 
+import org.dom4j.Entity;
+
+import javax.persistence.Table;
 import java.math.BigInteger;
 import java.sql.Timestamp;
 
+@Entity
+@Table(name = "task")
 public class Task {
 
     private final BigInteger task_number;
+    private final String task_type;
+
+
+    private String title;
     private Timestamp start_date;
     private Timestamp end_date;
     private Float weight;
@@ -13,8 +22,10 @@ public class Task {
     private final String subject_name;
     private final Integer subject_teacher;
 
-    public Task(BigInteger task_number, Timestamp start_date, Timestamp end_date, Float weight, String description, String subject_name, Integer subject_teacher) {
+    public Task(BigInteger task_number, String task_type, String title, Timestamp start_date, Timestamp end_date, Float weight, String description, String subject_name, Integer subject_teacher) {
         this.task_number = task_number;
+        this.task_type = task_type;
+        this.title = title;
         this.start_date = start_date;
         this.end_date = end_date;
         this.weight = weight;
@@ -23,9 +34,15 @@ public class Task {
         this.subject_teacher = subject_teacher;
     }
 
+    public String getTask_type() {return task_type;}
+
     public BigInteger getTask_number() {
         return task_number;
     }
+
+    public String getTitle() {return title;}
+
+    public void setTitle(String title) {this.title = title;}
 
     public Timestamp getStart_date() {
         return new Timestamp(start_date.getTime());
