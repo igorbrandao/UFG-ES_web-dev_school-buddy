@@ -13,9 +13,6 @@ import java.security.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by Rafa on 17/07/2016.
- */
 @WebServlet("/AddTask")
 public class ServletAddTask extends HttpServlet {
 
@@ -38,7 +35,7 @@ public class ServletAddTask extends HttpServlet {
 
             //Preencher objeto e persistir:
             TaskDAO taskDao = new TaskDAO();
-            taskDao.newTask(tipo, titulo, dataInicioTimestamp, dataFimTimestamp, peso, descricao, idDisciplina, idProfessor);
+            //taskDao.newTask(tipo, titulo, dataInicioTimestamp, dataFimTimestamp, peso, descricao, idDisciplina, idProfessor);
 
 
             //Resposta: (Acessar detailedClass)
@@ -52,8 +49,8 @@ public class ServletAddTask extends HttpServlet {
         try{
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SSS");
             Date parsedDate = dateFormat.parse(data);
-            Timestamp timestamp = new Timestamp(parsedDate.getTime());
-            return  timestamp;
+            //Timestamp timestamp = new Timestamp(parsedDate.getTime());
+            return null;//timestamp;
         }catch(Exception e){
             return null;
         }

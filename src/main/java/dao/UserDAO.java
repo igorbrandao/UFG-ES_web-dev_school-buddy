@@ -6,6 +6,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.Session;
+import util.Hash;
 
 import java.util.List;
 import java.util.Vector;
@@ -14,20 +15,9 @@ public class UserDAO {
 
     private static final SessionFactory sessionFactory = HibernateSession.getSessionFactory();
 
-    public boolean authenticate(String email, String password) {
-        User user = null;
-        Transaction transact = null;
-        try (Session session = sessionFactory.openSession()) {
-            transact = session.beginTransaction();
-            //TODO fix HQL >> user = (User) session.createQuery("from users where users.pk_email = email");
-            transact.commit();
-        } catch (HibernateException e) {
-            if (transact != null){
-                transact.rollback();
-            }
-            e.printStackTrace();
-        }
-        return user != null;
+    public boolean authenticate(Integer enrollment, String hash) {
+
+        return this.getUserByEnrollment(enrollment).getHash().equals(hash);
 
     }
 
@@ -47,6 +37,25 @@ public class UserDAO {
             e.printStackTrace();
         }
         return userID;
+
+    }
+
+    public User getUserByEnrollment(Integer enrollment) {
+
+        User user = null;
+        Transaction transact = null;
+        try (Session session = sessionFactory.openSession()) {
+            transact = session.beginTransaction();
+            user = (User) session.createQuery("from users where users.pk_enrollment = " + enrollment);
+            transact.commit();
+        } catch (HibernateException e) {
+            if (transact != null){
+                transact.rollback();
+            }
+            e.printStackTrace();
+        }
+        return user;
+
     }
 
     public List<User> listUsers(){
@@ -55,7 +64,7 @@ public class UserDAO {
         Transaction transact = null;
         try (Session session = sessionFactory.openSession()) {
             transact = session.beginTransaction();
-            for (Object aUser : session.createQuery("FROM users").list()) { //TODO fix HQL <<
+            for (Object aUser : session.createQuery("FROM users").list()) {
                 users.add((User)aUser);
             }
             transact.commit();
@@ -66,6 +75,7 @@ public class UserDAO {
             e.printStackTrace();
         }
         return users;
+
     }
 
     public void updateUser(Integer enrollment, User newUser){
@@ -88,7 +98,7 @@ public class UserDAO {
         }
     }
 
-    public void deleteEmployee(Integer enrollment){
+    public void deleteUser(Integer enrollment){
 
         Transaction transact = null;
         try (Session session = sessionFactory.openSession()) {

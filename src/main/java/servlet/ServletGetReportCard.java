@@ -9,10 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-/**
- * Created by alunoinf on 18/07/2016.
- */
-public class ServeletGetReportCard extends HttpServlet{
+public class ServletGetReportCard extends HttpServlet{
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -21,9 +18,8 @@ public class ServeletGetReportCard extends HttpServlet{
         try (PrintWriter out = response.getWriter()) {
 
             TaskEvaluationsDAO taskEvaluations = new TaskEvaluationsDAO();
-            TaskDA
-
 
         }
+    }
 
 }

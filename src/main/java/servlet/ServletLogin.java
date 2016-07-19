@@ -1,41 +1,17 @@
-/*
- * The MIT License
- *
- * Copyright 2015 Leonardo.
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- */
 package servlet;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import dao.UserDAO;
+import org.json.JSONObject;
+import util.Hash;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import org.json.JSONObject;
-
-import dao.UserDAO;
-import util.Hash;
-
-public class ServletAuthenticate extends HttpServlet {
+public class ServletLogin extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -48,20 +24,36 @@ public class ServletAuthenticate extends HttpServlet {
      */
     private void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         response.setContentType("application/json");
 
         try (PrintWriter out = response.getWriter()) {
-            
+
+            Integer enrollment = Integer.parseInt(request.getParameter("enrollment"));
+            String password = request.getParameter("password");
+            UserDAO userDAO = new UserDAO();
+
+            if (userDAO.authenticate(enrollment, password)) {
+                System.out.println("usuário autenticado");
+                request.getSession().setAttribute("user", userDAO.getUserByEnrollment(enrollment)); // Put user in session.
+                response.sendRedirect("/secretaria/home.jsp"); // Go to some start page.
+            } else {
+                System.out.println("usuário noob");
+                request.setAttribute("error", "Unknown login, try again"); // Set error msg for ${error}
+                request.getRequestDispatcher("/sign-in.jsp").forward(request, response); // Go back to login page.
+            }
+
+            /*
             String email = request.getParameter("email");
             String password = request.getParameter("password");
             UserDAO userDao = new UserDAO();
             JSONObject JSON = new JSONObject();
             Hash hash = new Hash();
-            JSON.put("auth", userDao.authenticate(email, hash.getHash(password))); 
+            JSON.put("auth", userDao.authenticate(email, hash.getHash(password)));
             out.print(JSON);
             out.flush();
-            
+            //*/
+
         }
     }
 

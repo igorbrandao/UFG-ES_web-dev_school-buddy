@@ -12,9 +12,6 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Vector;
 
-/**
- * Created by alunoinf on 18/07/2016.
- */
 public class TaskDAO {
 
     private static final SessionFactory sessionFactory = HibernateSession.getSessionFactory();

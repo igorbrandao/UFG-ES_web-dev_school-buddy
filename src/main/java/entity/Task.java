@@ -1,18 +1,14 @@
 package entity;
 
-import org.dom4j.Entity;
-
 import javax.persistence.Table;
 import java.math.BigInteger;
 import java.sql.Timestamp;
 
-@Entity
+@javax.persistence.Entity
 @Table(name = "task")
 public class Task {
 
-    private final BigInteger task_number;
-
-
+    private BigInteger task_number;
     private String task_type;
     private String title;
     private Timestamp start_date;
