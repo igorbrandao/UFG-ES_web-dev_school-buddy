@@ -43,6 +43,8 @@ public class ServletLogin extends HttpServlet {
                 request.getRequestDispatcher("/sign-in.jsp").forward(request, response); // Go back to login page.
             }
 
+            out.flush();
+
             /*
             String email = request.getParameter("email");
             String password = request.getParameter("password");

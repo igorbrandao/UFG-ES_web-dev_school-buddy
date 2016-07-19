@@ -1,44 +1,36 @@
 package entity;
 
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigInteger;
 import java.sql.Timestamp;
 
-@javax.persistence.Entity
-@Table(name = "task")
+@Entity
+@Table(name = "tasks")
 public class Task {
 
-    private BigInteger task_number;
+    @Id
+    private BigInteger pk_task_number;
     private String task_type;
     private String title;
     private Timestamp start_date;
     private Timestamp end_date;
     private Float weight;
     private String description;
-    private final String subject_name;
-    private final Integer subject_teacher;
+    private String cfk_subject_name;
+    private Integer cfk_subject_teacher;
 
-    public Task(String task_type, String title, Timestamp start_date, Timestamp end_date, Float weight, String description, String subject_name, Integer subject_teacher) {
+    public Task() {
+    }
+
+    public Task(String task_type, String title, Timestamp start_date, Timestamp end_date, Float weight, String description, String cfk_subject_name, Integer cfk_subject_teacher) {
         this.task_type = task_type;
         this.title = title;
         this.start_date = start_date;
         this.end_date = end_date;
         this.weight = weight;
         this.description = description;
-        this.subject_name = subject_name;
-        this.subject_teacher = subject_teacher;
-    }
-
-    public Task(BigInteger task_number, Task task) {
-        this.task_number = task_number;
-        this.task_type = task.getTask_type();
-        this.title = task.getTitle();
-        this.start_date = task.getStart_date();
-        this.end_date = task.getEnd_date();
-        this.weight = task.getWeight();
-        this.description = task.getDescription();
-        this.subject_name = task.getSubject_name();
-        this.subject_teacher = task.getSubject_teacher();
+        this.cfk_subject_name = cfk_subject_name;
+        this.cfk_subject_teacher = cfk_subject_teacher;
     }
 
     public String getTask_type() {
@@ -49,8 +41,8 @@ public class Task {
         this.task_type = task_type;
     }
 
-    public BigInteger getTask_number() {
-        return task_number;
+    public BigInteger getPk_task_number() {
+        return pk_task_number;
     }
 
     public String getTitle() {
@@ -93,12 +85,12 @@ public class Task {
         this.description = description;
     }
 
-    public String getSubject_name() {
-        return subject_name;
+    public String getCfk_subject_name() {
+        return cfk_subject_name;
     }
 
-    public Integer getSubject_teacher() {
-        return subject_teacher;
+    public Integer getCfk_subject_teacher() {
+        return cfk_subject_teacher;
     }
 
 }

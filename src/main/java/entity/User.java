@@ -1,18 +1,22 @@
 package entity;
 
-import javax.persistence.Table;
+import javax.persistence.*;
 
-@javax.persistence.Entity
+@Entity
 @Table(name = "users")
 public class User {
 
-    private final Integer pk_enrollment;
-    private final String user_type;
+    @Id
+    private Integer pk_enrollment;
+    private String user_type;
     private String email;
-    private final String hash;
+    private String hash;
     private String name;
     private String address;
     private String phone;
+
+    public User() {
+    }
 
     public User(Integer pk_enrollment, String user_type, String email, String hash, String name, String address, String phone) {
         this.pk_enrollment = pk_enrollment;
@@ -24,7 +28,7 @@ public class User {
         this.phone = phone;
     }
 
-    public int getPk_enrollment() {
+    public Integer getPk_enrollment() {
         return pk_enrollment;
     }
 

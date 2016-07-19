@@ -1,16 +1,25 @@
 package entity;
 
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigInteger;
 
-@javax.persistence.Entity
+//TODO ANNOTATE!
 @Table(name = "tasks_evaluations")
 public class TaskEvaluations {
 
-    private final BigInteger fk_task_number;
-    private final Integer fk_student_enrollment;
-    private final Float grade;
-    private final Integer bimester;
+    private BigInteger fk_task_number;
+
+
+    private Integer fk_student_enrollment;
+
+
+    private Float grade;
+
+
+    private Integer bimester;
+
+    public TaskEvaluations() {
+    }
 
     public TaskEvaluations(BigInteger fk_task_number, Integer fk_student_enrollment, Float grade, Integer bismester) {
         this.fk_task_number = fk_task_number;
@@ -31,9 +40,8 @@ public class TaskEvaluations {
         return grade;
     }
 
-    public Integer getBismester() {
+    public Integer getBimester() {
         return bimester;
     }
-
 
 }

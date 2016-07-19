@@ -1,15 +1,19 @@
 package entity;
 
-import javax.persistence.Table;
+import javax.persistence.*;
 
-@javax.persistence.Entity
+@Entity
 @Table(name = "classes")
 public class Class {
 
-    private final String pk_class_name;
-    private final Integer total_students;
-    private final Integer total_subjects;
+    @Id
+    private String pk_class_name;
+    private Integer total_students;
+    private Integer total_subjects;
     private boolean is_active;
+
+    public Class() {
+    }
 
     public Class(String pk_class_name, Integer total_students, Integer total_subjects) {
         this.pk_class_name = pk_class_name;

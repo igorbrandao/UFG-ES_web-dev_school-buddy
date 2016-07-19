@@ -46,7 +46,7 @@ public class UserDAO {
         Transaction transact = null;
         try (Session session = sessionFactory.openSession()) {
             transact = session.beginTransaction();
-            user = (User) session.createQuery("from users where users.pk_enrollment = " + enrollment);
+            user = (User) session.createQuery("from User where pk_enrollment = " + enrollment).uniqueResult();
             transact.commit();
         } catch (HibernateException e) {
             if (transact != null){
@@ -64,7 +64,7 @@ public class UserDAO {
         Transaction transact = null;
         try (Session session = sessionFactory.openSession()) {
             transact = session.beginTransaction();
-            for (Object aUser : session.createQuery("FROM users").list()) {
+            for (Object aUser : session.createQuery("FROM User").list()) {
                 users.add((User)aUser);
             }
             transact.commit();

@@ -1,19 +1,22 @@
 package entity;
 
-import javax.persistence.Table;
+import javax.persistence.*;
 
-@javax.persistence.Entity
+//TODO ANNOTATE!
 @Table(name = "classes_subjects")
 public class ClassSubjects {
 
 
-    private final String fk_class_name;
+    private String fk_class_name;
 
 
-    private final String cpk_subject_name;
+    private String cpk_subject_name;
 
 
-    private final Integer cpk_teacher_enrollment;
+    private Integer cpk_teacher_enrollment;
+
+    public ClassSubjects() {
+    }
 
     public ClassSubjects(String cpk_subject_name, Integer cpk_teacher_enrollment, String fk_class_name) {
         this.cpk_subject_name = cpk_subject_name;
