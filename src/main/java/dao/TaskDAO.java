@@ -1,5 +1,4 @@
 package dao;
-
 import db.HibernateSession;
 import entity.Task;
 import org.hibernate.HibernateException;
@@ -13,16 +12,19 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Vector;
 
+/**
+ * Created by alunoinf on 18/07/2016.
+ */
 public class TaskDAO {
 
     private static final SessionFactory sessionFactory = HibernateSession.getSessionFactory();
 
-    public Integer newTask(BigInteger task_number, String task_type, String title, Timestamp start_date, Timestamp end_date, Float weight, String description, String subject_name, Integer subject_teacher){
+    public Integer newTask(String task_type, String title, Timestamp start_date, Timestamp end_date, Float weight, String description, String subject_name, Integer subject_teacher){
         Transaction transact = null;
         Integer taskID = null;
         try (Session session = sessionFactory.openSession()) {
             transact = session.beginTransaction();
-            Task task = new Task(task_number,task_type,title, start_date, end_date, weight, description, subject_name, subject_teacher);
+            Task task = new Task(task_type,title, start_date, end_date, weight, description, subject_name, subject_teacher);
             taskID = (Integer) session.save(task);
             transact.commit();
         } catch (HibernateException e) {
@@ -33,6 +35,7 @@ public class TaskDAO {
         }
         return taskID;
     }
+
 
     public List<Task> listTasks(){
 
