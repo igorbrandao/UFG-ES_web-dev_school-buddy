@@ -1,4 +1,5 @@
 CREATE TYPE user_type_enum AS ENUM ('admin', 'aluno', 'professor');
+CREATE TYPE task_type_enum AS ENUM ('atividade','prova');
 
 CREATE TABLE users
 (
@@ -42,6 +43,8 @@ CREATE TABLE classes_subjects
 CREATE TABLE tasks
 (
   pk_task_number bigint NOT NULL,
+  task_type task_type_enum NOT NULL.
+  title character varying(50) NOT NULL,
   start_date timestamp NOT NULL,
   end_date timestamp NOT NULL,
   weight float NOT NULL,
