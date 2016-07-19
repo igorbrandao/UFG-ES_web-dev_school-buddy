@@ -2,25 +2,25 @@ package entity;
 
 public class ClassSubjects {
 
-    private final String subject_name;
-    private final Integer teacher;
-    private final String class_name;
+    private final String fk_class_name;
+    private final String cpk_subject_name;
+    private final Integer cpk_teacher_enrollment;
 
-    public ClassSubjects(String subject_name, Integer teacher, String class_name) {
-        this.subject_name = subject_name;
-        this.teacher = teacher;
-        this.class_name = class_name;
+    public ClassSubjects(String cpk_subject_name, Integer cpk_teacher_enrollment, String fk_class_name) {
+        this.cpk_subject_name = cpk_subject_name;
+        this.cpk_teacher_enrollment = cpk_teacher_enrollment;
+        this.fk_class_name = fk_class_name;
     }
 
-    public String getSubject_name() {
-        return subject_name;
+    public String getCpk_subject_name() {
+        return cpk_subject_name;
     }
 
-    public Integer getTeacher() {
-        return teacher;
+    public Integer getCpk_teacher_enrollment() {
+        return cpk_teacher_enrollment;
     }
 
-    public String getClass_name() {
-        return class_name;
+    public String getFk_class_name() {
+        return fk_class_name;
     }
 }

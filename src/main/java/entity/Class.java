@@ -2,20 +2,20 @@ package entity;
 
 public class Class {
 
-    private final String class_name;
+    private final String pk_class_name;
     private final Integer total_students;
     private final Integer total_subjects;
     private boolean is_active;
 
-    public Class(String class_name, Integer total_students, Integer total_subjects) {
-        this.class_name = class_name;
+    public Class(String pk_class_name, Integer total_students, Integer total_subjects) {
+        this.pk_class_name = pk_class_name;
         this.total_students = total_students;
         this.total_subjects = total_subjects;
         this.is_active = true;
     }
 
-    public String getClass_name() {
-        return class_name;
+    public String getPk_class_name() {
+        return pk_class_name;
     }
 
     public Integer getTotal_students() {

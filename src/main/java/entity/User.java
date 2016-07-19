@@ -7,26 +7,26 @@ import javax.persistence.Table;
 @Table(name = "user")
 public class User {
 
-    private final Integer enrollment;
+    private final Integer pk_enrollment;
     private final String user_type;
     private String email;
-    private final String password;
+    private final String hash;
     private String name;
     private String address;
     private String phone;
 
-    public User(Integer enrollment, String user_type, String email, String password, String name, String address, String phone) {
-        this.enrollment = enrollment;
+    public User(Integer pk_enrollment, String user_type, String email, String hash, String name, String address, String phone) {
+        this.pk_enrollment = pk_enrollment;
         this.user_type = user_type;
         this.email = email;
-        this.password = password;
+        this.hash = hash;
         this.name = name;
         this.address = address;
         this.phone = phone;
     }
 
-    public int getEnrollment() {
-        return enrollment;
+    public int getPk_enrollment() {
+        return pk_enrollment;
     }
 
     public String getUser_type() {
@@ -41,8 +41,8 @@ public class User {
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public String getHash() {
+        return hash;
     }
 
     public String getName() {

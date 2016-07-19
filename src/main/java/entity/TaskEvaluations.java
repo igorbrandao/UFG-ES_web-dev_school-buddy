@@ -2,28 +2,25 @@ package entity;
 
 import java.math.BigInteger;
 
-/**
- * Created by alunoinf on 18/07/2016.
- */
 public class TaskEvaluations {
-    private final BigInteger task_number; // número da tarefa que vem de task
-    private final Integer student;       // nome do estudante
+    private final BigInteger fk_task_number; // número da tarefa que vem de task
+    private final Integer fk_student_enrollment;       // nome do estudante
     private final Float grade;          // nota da tarefa
     private final Integer bimester;   //  bimestre
 
-    public TaskEvaluations(BigInteger task_number, Integer student, Float grade, Integer bismester) {
-        this.task_number = task_number;
-        this.student = student;
+    public TaskEvaluations(BigInteger fk_task_number, Integer fk_student_enrollment, Float grade, Integer bismester) {
+        this.fk_task_number = fk_task_number;
+        this.fk_student_enrollment = fk_student_enrollment;
         this.grade = grade;
         this.bimester = bismester;
     }
 
-    public BigInteger getTask_number() {
-        return task_number;
+    public BigInteger getFk_task_number() {
+        return fk_task_number;
     }
 
-    public Integer getStudent() {
-        return student;
+    public Integer getFk_student_enrollment() {
+        return fk_student_enrollment;
     }
 
     public Float getGrade() {
@@ -36,4 +33,4 @@ public class TaskEvaluations {
 
 
 }
-//select subject_name from task where task_number = this.tasknumber
+//select subject_name from task where fk_task_number = this.tasknumber

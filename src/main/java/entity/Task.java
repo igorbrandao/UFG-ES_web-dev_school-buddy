@@ -10,36 +10,34 @@ import java.sql.Timestamp;
 @Table(name = "task")
 public class Task {
 
-    private final BigInteger task_number;
-
-
+    private final BigInteger pk_task_number;
     private String task_type;
     private String title;
     private Timestamp start_date;
     private Timestamp end_date;
     private Float weight;
     private String description;
-    private final String subject_name;
-    private final Integer subject_teacher;
+    private final String cfk_subject_name;
+    private final Integer cfk_subject_teacher;
 
-    public Task(BigInteger task_number, String task_type, String title, Timestamp start_date, Timestamp end_date, Float weight, String description, String subject_name, Integer subject_teacher) {
-        this.task_number = task_number;
+    public Task(BigInteger pk_task_number, String task_type, String title, Timestamp start_date, Timestamp end_date, Float weight, String description, String cfk_subject_name, Integer cfk_subject_teacher) {
+        this.pk_task_number = pk_task_number;
         this.task_type = task_type;
         this.title = title;
         this.start_date = start_date;
         this.end_date = end_date;
         this.weight = weight;
         this.description = description;
-        this.subject_name = subject_name;
-        this.subject_teacher = subject_teacher;
+        this.cfk_subject_name = cfk_subject_name;
+        this.cfk_subject_teacher = cfk_subject_teacher;
     }
 
     public String getTask_type() {return task_type;}
 
     public void setTask_type(String task_type) {this.task_type = task_type;}
 
-    public BigInteger getTask_number() {
-        return task_number;
+    public BigInteger getPk_task_number() {
+        return pk_task_number;
     }
 
     public String getTitle() {return title;}
@@ -78,12 +76,12 @@ public class Task {
         this.description = description;
     }
 
-    public String getSubject_name() {
-        return subject_name;
+    public String getCfk_subject_name() {
+        return cfk_subject_name;
     }
 
-    public Integer getSubject_teacher() {
-        return subject_teacher;
+    public Integer getCfk_subject_teacher() {
+        return cfk_subject_teacher;
     }
 
 }

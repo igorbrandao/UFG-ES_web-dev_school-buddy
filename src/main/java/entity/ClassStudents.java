@@ -1,23 +1,20 @@
 package entity;
 
-/**
- * Created by alunoinf on 18/07/2016.
- */
 public class ClassStudents {
 
-    private final Integer student;
-    private final String class_name;
+    private final Integer fk_student_enrollment;
+    private final String fk_class_name;
 
-    public ClassStudents(Integer student, String class_name) {
-        this.student = student;
-        this.class_name = class_name;
+    public ClassStudents(Integer fk_student_enrollment, String fk_class_name) {
+        this.fk_student_enrollment = fk_student_enrollment;
+        this.fk_class_name = fk_class_name;
     }
 
-    public Integer getStudent() {
-        return student;
+    public Integer getFk_student_enrollment() {
+        return fk_student_enrollment;
     }
 
-    public String getClass_name() {
-        return class_name;
+    public String getFk_class_name() {
+        return fk_class_name;
     }
 }
