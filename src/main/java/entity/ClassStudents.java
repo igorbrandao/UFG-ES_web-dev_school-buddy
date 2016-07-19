@@ -1,5 +1,9 @@
 package entity;
 
+import javax.persistence.Table;
+
+@javax.persistence.Entity
+@Table(name = "classes_students")
 public class ClassStudents {
 
     private final Integer fk_student_enrollment;
