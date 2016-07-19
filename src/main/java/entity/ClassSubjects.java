@@ -1,9 +1,18 @@
 package entity;
 
+import javax.persistence.Table;
+
+@javax.persistence.Entity
+@Table(name = "classes_subjects")
 public class ClassSubjects {
 
+
     private final String fk_class_name;
+
+
     private final String cpk_subject_name;
+
+
     private final Integer cpk_teacher_enrollment;
 
     public ClassSubjects(String cpk_subject_name, Integer cpk_teacher_enrollment, String fk_class_name) {

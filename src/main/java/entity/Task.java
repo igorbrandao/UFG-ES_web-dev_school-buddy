@@ -1,16 +1,15 @@
 package entity;
 
-import org.dom4j.Entity;
-
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.math.BigInteger;
 import java.sql.Timestamp;
 
-@Entity
-@Table(name = "task")
+@javax.persistence.Entity
+@Table(name = "tasks")
 public class Task {
 
-    private final BigInteger pk_task_number;
+    @Id @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private BigInteger pk_task_number;
     private String task_type;
     private String title;
     private Timestamp start_date;
@@ -20,8 +19,7 @@ public class Task {
     private final String cfk_subject_name;
     private final Integer cfk_subject_teacher;
 
-    public Task(BigInteger pk_task_number, String task_type, String title, Timestamp start_date, Timestamp end_date, Float weight, String description, String cfk_subject_name, Integer cfk_subject_teacher) {
-        this.pk_task_number = pk_task_number;
+    public Task(String task_type, String title, Timestamp start_date, Timestamp end_date, Float weight, String description, String cfk_subject_name, Integer cfk_subject_teacher) {
         this.task_type = task_type;
         this.title = title;
         this.start_date = start_date;

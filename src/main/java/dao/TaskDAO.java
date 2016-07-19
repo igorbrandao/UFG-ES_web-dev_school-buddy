@@ -1,5 +1,6 @@
 package dao;
 
+import db.HibernateSession;
 import entity.Task;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -12,17 +13,14 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.Vector;
 
-/**
- * Created by alunoinf on 18/07/2016.
- */
 public class TaskDAO {
 
-    private static SessionFactory factory = new Configuration().configure().buildSessionFactory();
+    private static final SessionFactory sessionFactory = HibernateSession.getSessionFactory();
 
     public Integer newTask(BigInteger task_number, String task_type, String title, Timestamp start_date, Timestamp end_date, Float weight, String description, String subject_name, Integer subject_teacher){
         Transaction transact = null;
         Integer taskID = null;
-        try (Session session = factory.openSession()) {
+        try (Session session = sessionFactory.openSession()) {
             transact = session.beginTransaction();
             Task task = new Task(task_number,task_type,title, start_date, end_date, weight, description, subject_name, subject_teacher);
             taskID = (Integer) session.save(task);
@@ -40,7 +38,7 @@ public class TaskDAO {
 
         List<Task> tasks = new Vector<>();
         Transaction transact = null;
-        try (Session session = factory.openSession()) {
+        try (Session session = sessionFactory.openSession()) {
             transact = session.beginTransaction();
             for (Object aTask : session.createQuery("FROM tasks").list()) { //TODO fix HQL <<
                 tasks.add((Task)aTask);
@@ -58,7 +56,7 @@ public class TaskDAO {
     public void deleteTask(Integer enrollment){
 
         Transaction transact = null;
-        try (Session session = factory.openSession()) {
+        try (Session session = sessionFactory.openSession()) {
             transact = session.beginTransaction();
             Task task = session.get(Task.class, enrollment);
             session.delete(task);

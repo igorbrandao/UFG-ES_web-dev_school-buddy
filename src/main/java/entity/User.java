@@ -1,10 +1,9 @@
 package entity;
 
-import javax.persistence.Entity;
 import javax.persistence.Table;
 
-@Entity
-@Table(name = "user")
+@javax.persistence.Entity
+@Table(name = "users")
 public class User {
 
     private final Integer pk_enrollment;

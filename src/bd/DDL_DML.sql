@@ -35,7 +35,7 @@ CREATE TABLE classes_subjects
   fk_class_name character varying(20) NOT NULL,
   cpk_subject_name character varying(30) NOT NULL,
   cpk_teacher_enrollment integer NOT NULL,
-  CONSTRAINT pkey_subjects PRIMARY KEY (cpk_subject_name, cpk_teacher),
+  CONSTRAINT pkey_subjects PRIMARY KEY (cpk_subject_name, cpk_teacher_enrollment),
   CONSTRAINT valid_cpk_teacher CHECK (cpk_teacher_enrollment > 199999)
 );
 
