@@ -11,9 +11,9 @@ import java.sql.Timestamp;
 public class Task {
 
     private final BigInteger task_number;
-    private final String task_type;
 
 
+    private String task_type;
     private String title;
     private Timestamp start_date;
     private Timestamp end_date;
@@ -35,6 +35,8 @@ public class Task {
     }
 
     public String getTask_type() {return task_type;}
+
+    public void setTask_type(String task_type) {this.task_type = task_type;}
 
     public BigInteger getTask_number() {
         return task_number;
