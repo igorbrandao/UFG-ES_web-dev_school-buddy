@@ -101,7 +101,7 @@ function createUser() {
 
 	var request = $.ajax({
 		type: "POST",
-		url: "ServletUpdateUser",
+		url: "ServletCreateUser",
 		data: paramsString,
 		dataType: "text"
 	});

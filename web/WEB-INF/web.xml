@@ -17,7 +17,7 @@
 
     <servlet-mapping>
         <servlet-name>ServletLogin</servlet-name>
-        <url-pattern>/Login</url-pattern>
+        <url-pattern>/ServletLogin</url-pattern>
     </servlet-mapping>
 
 </web-app>

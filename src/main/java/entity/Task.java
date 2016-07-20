@@ -9,6 +9,8 @@ import java.sql.Timestamp;
 public class Task {
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO, generator="task_number")
+    @SequenceGenerator(name="task_number", sequenceName="TASK_ID_SEQUENCE", allocationSize=1)
     private BigInteger pk_task_number;
     private String task_type;
     private String title;
@@ -18,9 +20,6 @@ public class Task {
     private String description;
     private String cfk_subject_name;
     private Integer cfk_subject_teacher;
-
-    public Task() {
-    }
 
     public Task(String task_type, String title, Timestamp start_date, Timestamp end_date, Float weight, String description, String cfk_subject_name, Integer cfk_subject_teacher) {
         this.task_type = task_type;
@@ -33,16 +32,23 @@ public class Task {
         this.cfk_subject_teacher = cfk_subject_teacher;
     }
 
+    public Task() {
+    }
+
+    public BigInteger getPk_task_number() {
+        return pk_task_number;
+    }
+
+    public void setPk_task_number(BigInteger pk_task_number) {
+        this.pk_task_number = pk_task_number;
+    }
+
     public String getTask_type() {
         return task_type;
     }
 
     public void setTask_type(String task_type) {
         this.task_type = task_type;
-    }
-
-    public BigInteger getPk_task_number() {
-        return pk_task_number;
     }
 
     public String getTitle() {
@@ -89,8 +95,15 @@ public class Task {
         return cfk_subject_name;
     }
 
+    public void setCfk_subject_name(String cfk_subject_name) {
+        this.cfk_subject_name = cfk_subject_name;
+    }
+
     public Integer getCfk_subject_teacher() {
         return cfk_subject_teacher;
     }
 
+    public void setCfk_subject_teacher(Integer cfk_subject_teacher) {
+        this.cfk_subject_teacher = cfk_subject_teacher;
+    }
 }

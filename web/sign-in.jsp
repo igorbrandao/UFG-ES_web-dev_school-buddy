@@ -27,7 +27,7 @@
 					<a class="navbar-brand" href="#">[Nome da Escola]</a>
 				</div>
 				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<form action="Login" method="post" class="navbar-form navbar-right" role="form">
+					<form action="Login" method="post" class="navbar-form navbar-right">
 						<span class="input-group">
 						<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 						<input id="enrollment" type="number" class="form-control" name="enrollment" placeholder="Sua Matrícula">
@@ -36,7 +36,7 @@
 						<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
 						<input id="password" type="password" class="form-control" name="password" placeholder="Sua Senha">
 						</span>
-						<button type="submit" class="btn btn-primary">Entrar</button>
+						<button onclick="attemptLogin()" class="btn btn-primary">Entrar</button>
 					</form>
 				</div>
 			</div>
@@ -53,6 +53,10 @@
 		</div><!-- /blue -->
 
 		<!-- MAIN CONTENT -->
+
+        <div id=loginResult>
+
+        </div>
 
 		<div class="container mtb">
 			<div class="row">
