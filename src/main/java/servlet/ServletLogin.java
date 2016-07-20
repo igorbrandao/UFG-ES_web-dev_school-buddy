@@ -32,29 +32,18 @@ public class ServletLogin extends HttpServlet {
             Integer enrollment = Integer.parseInt(request.getParameter("enrollment"));
             String password = request.getParameter("password");
             UserDAO userDAO = new UserDAO();
+            JSONObject json = new JSONObject();
 
             if (userDAO.authenticate(enrollment, password)) {
-                System.out.println("usuário autenticado");
-                request.getSession().setAttribute("user", userDAO.getUserByEnrollment(enrollment)); // Put user in session.
-                response.sendRedirect("/secretaria/home.jsp"); // Go to some start page.
+                String userType = userDAO.getUserByEnrollment(enrollment).getUser_type();
+                request.getSession().setAttribute("userType", userType);
+                json.put("userType", userType);
             } else {
-                System.out.println("usuário noob");
-                request.setAttribute("error", "Unknown login, try again"); // Set error msg for ${error}
-                request.getRequestDispatcher("/sign-in.jsp").forward(request, response); // Go back to login page.
+                json.put("userType", "");
             }
 
+            out.print(json);
             out.flush();
-
-            /*
-            String email = request.getParameter("email");
-            String password = request.getParameter("password");
-            UserDAO userDao = new UserDAO();
-            JSONObject JSON = new JSONObject();
-            Hash hash = new Hash();
-            JSON.put("auth", userDao.authenticate(email, hash.getHash(password)));
-            out.print(JSON);
-            out.flush();
-            //*/
 
         }
     }

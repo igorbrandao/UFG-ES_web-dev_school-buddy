@@ -8,6 +8,8 @@ function attemptLogin() {
         return;
     }
 
+    $("#loginbtn").prop("disabled", true);
+
     var params = {"enrollment":enrollment, "password":password};
 
     var request = $.ajax({
@@ -17,8 +19,16 @@ function attemptLogin() {
         dataType: "text"
     });
 
-    request.done(function (){
-        showAlert("alert-success", "You just logged in!");
+    request.done(function (data){
+
+        var jsonData = JSON.parse(data);
+
+        if(jsonData.userType !== "") {
+            window.location.replace(jsonData.userType + "/home.jsp");
+        }
+        else{
+            showAlert("alert-warning", "Matrícula e/ou senha incorretos.");
+        }
     });
 
     request.fail(function (textStatus, errorThrown){
@@ -26,7 +36,7 @@ function attemptLogin() {
     });
 
     request.always(function (){
-        //Something
+        $("#loginbtn").prop("disabled", false);
     });
 
     event.preventDefault();

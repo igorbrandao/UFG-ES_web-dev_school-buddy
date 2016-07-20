@@ -1,4 +1,4 @@
-CREATE TYPE user_type_enum AS ENUM ('admin', 'aluno', 'professor');
+CREATE TYPE user_type_enum AS ENUM ('secretaria', 'discente', 'docente');
 
 CREATE TABLE users
 (
@@ -82,7 +82,7 @@ ALTER TABLE tasks_evaluations
 -- Admin Insert
 INSERT INTO users VALUES (
   1,
-  'admin',
+  'secretaria',
   'admin@dummy.email',
   '4acb4bc224acbbe3c2bfdcaa39a4324e', --admin321
   'Escola da Tia Renata',

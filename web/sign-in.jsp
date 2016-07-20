@@ -36,7 +36,7 @@
 						<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
 						<input id="password" type="password" class="form-control" name="password" placeholder="Sua Senha">
 						</span>
-						<button onclick="attemptLogin()" class="btn btn-primary">Entrar</button>
+						<button id="loginbtn" type="button" onclick="attemptLogin()" class="btn btn-primary">Entrar</button>
 					</form>
 				</div>
 			</div>

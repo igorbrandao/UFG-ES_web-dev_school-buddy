@@ -197,7 +197,7 @@ function showAlert (alertType, alertClass, message) {
     }
 
     $('#queryResult').html(
-        "<div id='queryAlert' class='alert alert-dismissible " + alertClass + "' role='alert'><button type='button' class='close' data-dismiss='alert'aria-label='Close'><span aria-hidden='true'>&times;</span></button>" + alertTexts[alertType] + " " + message + "</div>"
+        "<div id='queryAlert' class='alert alert-dismissible " + alertClass + "' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>" + alertTexts[alertType] + " " + message + "</div>"
     );
     $("#queryAlert").fadeTo(3000, 500).slideUp(500, function(){
         $("#queryAlert").alert('close');

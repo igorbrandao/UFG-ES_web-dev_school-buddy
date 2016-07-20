@@ -2,7 +2,7 @@ package entity;
 
 import javax.persistence.*;
 
-//TODO ANNOTATE!
+//TODO COMPOSITE PK ANNOTATE!
 @Table(name = "classes_subjects")
 public class ClassSubjects {
 

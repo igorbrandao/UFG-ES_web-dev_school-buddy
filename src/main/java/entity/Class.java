@@ -1,8 +1,8 @@
 package entity;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "classes")
@@ -13,14 +13,30 @@ public class Class {
     private Integer total_students;
     private Integer total_subjects;
     private Boolean is_active;
-    //private Set<ClassStudents> students = new HashSet<>();
-    //private Set<ClassSubjects> subjects = new HashSet<>();
 
-    public Class(String pk_class_name, Integer total_students, Integer total_subjects, Boolean is_active) {
+    @ManyToMany
+    @JoinTable(name="classes_students", joinColumns=
+            {@JoinColumn(name="fk_class_name")}, inverseJoinColumns=
+            {@JoinColumn(name="fk_student_enrollment")})
+    private List<User> students;
+
+    /*
+    @ManyToMany
+    @JoinTable(name="classes_subjects", joinColumns=
+            {@JoinColumn(name="fk_class_name")}, inverseJoinColumns=
+            {@ //COMPOSITE JoinColumn(name="cpk_subject_name")})
+    private List<ClassSubjects> subjects;
+    **/
+
+    public Class() {
+    }
+
+    public Class(String pk_class_name, Integer total_students, Integer total_subjects, Boolean is_active, List students) {
         this.pk_class_name = pk_class_name;
         this.total_students = total_students;
         this.total_subjects = total_subjects;
         this.is_active = is_active;
+        this.students = students;
     }
 
     public String getPk_class_name() {
