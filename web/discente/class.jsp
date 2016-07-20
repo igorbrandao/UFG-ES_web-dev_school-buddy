@@ -80,7 +80,7 @@
 					<div class="col-md-10 col-md-offset-1">
 						<div class="panel panel-default">
 							<h4>Lembretes</h4>
-							<table id="usersTable" class="table">
+							<table id="usersTable" name="usersTable" class="table">
 								<tr data-status="primeiro">
 									<th>27/01/2017</th>
 								</tr>
@@ -132,7 +132,7 @@
 					<div class="col-md-3 col-md-offset-1">
 						<div class="panel panel-default">
 							<h4>Chamada</h4>
-							<table id="usersTable" class="table">
+							<table id="usersTable" name ="usersTable" class="table">
 								<tr data-status="primeiro">
 									<th>Data</th>
 									<th>Status</th>
@@ -224,7 +224,7 @@
 					<div class="col-md-4">
 						<div class="panel panel-default">
 							<h4>Notas Prova</h4>
-							<table id="usersTable" class="table">
+							<table id="usersTable" name="usersTable" class="table">
 								<tr data-status="primeiro">
 									<th></th>
 									<th>Data</th>
@@ -287,7 +287,7 @@
 					<div class="col-md-3">
 						<div class="panel panel-default">
 							<h4>Notas Trabalho</h4>
-							<table id="usersTable" class="table">
+							<table id="usersTable" name="usersTable" class="table">
 								<tr data-status="primeiro">
 									<th></th>
 									<th>Data</th>

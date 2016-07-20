@@ -73,7 +73,7 @@
 					</div>
 				</div>
 				<div class="well">
-					<table id="usersTable" class="table">
+					<table id="usersTable" name="usersTable" class="table">
 
 						<!-- PRIMEIRO BIMESTRE -->
 

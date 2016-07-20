@@ -66,7 +66,7 @@
             </span>
             <span class="col-lg-8">
               <form>
-              <input action="" method=”post” type="text" class="form-control" name=”titulo” id="titulo">
+              <input action="" method=”post” type="text" class="form-control" name="titulo" id="titulo">
               </form>
             </span>
           </span>

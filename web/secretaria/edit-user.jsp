@@ -74,7 +74,7 @@
 						</div>
 						<div class="row">
 							<span class="col-lg-4">
-							<input class="form-control" type="number" id="enrollment" placeholder="Matrícula">
+							<input class="form-control" type="number" id="enrollment" name="enrollment" placeholder="Matrícula">
 							</span>
 							<span class="col-lg-offset-1 col-lg-1">
                                 <button id="find" type="button" data-toggle="modal" class="btn btn-info" style="float: right;">Encontrar Usuário</button>
@@ -115,10 +115,10 @@
 								</div>
 								<div class="row">
 									<span class="col-lg-4">
-										<input type="email" class="form-control" id="email">
+										<input type="email" class="form-control" id="email" name="email">
 									</span>
 									<span class="col-lg-4">
-										<input type="text" class="form-control" id="name">
+										<input type="text" class="form-control" id="name" name="name">
 									</span>
 								</div>
 								<br>
@@ -135,13 +135,13 @@
 								</div>
 								<div class="row">
 									<span class="col-lg-4">
-										<input type="text" class="form-control" id="address">
+										<input type="text" class="form-control" id="address" name="address">
 									</span>
 									<span class="col-lg-4">
-										<input type="text" class="form-control" id="phone">
+										<input type="text" class="form-control" id="phone" name="phone">
 									</span>
 									<span class="col-lg-2">
-										<input type="number" class="form-control" id="age">
+										<input type="number" class="form-control" id="age" name="age">
 									</span>
 								</div>
 								<br>
@@ -175,10 +175,9 @@
 								</div>
 								<div class="row">
 									<span class="col-lg-4">
-										<input type="email" class="form-control" id="email">
-									</span>
+										<input type="email" class="form-control" id="email" name="email">
 									<span class="col-lg-4">
-										<input type="text" class="form-control" id="name">
+										<input type="text" class="form-control" id="name" name="name">
 									</span>
 								</div>
 								<br>
@@ -195,13 +194,13 @@
 								</div>
 								<div class="row">
 									<span class="col-lg-4">
-										<input type="text" class="form-control" id="address">
+										<input type="text" class="form-control" id="address" name="address">
 									</span>
 									<span class="col-lg-4">
-										<input type="text" class="form-control" id="phone">
+										<input type="text" class="form-control" id="phone" name="phone">
 									</span>
 									<span class="col-lg-2">
-										<input type="number" class="form-control" id="age">
+										<input type="number" class="form-control" id="age" name="age">
 									</span>
 								</div>
 								<br>
@@ -211,7 +210,7 @@
 										<label for="Areas" class="">Areas de Conhecimento</label>
 									</span>
 									<span class="col-lg-6">
-										<input type="text" class="form-control" id="areas">
+										<input type="text" class="form-control" id="areas" name="areas">
 									</span>
 								</div>
 								<br>
@@ -245,10 +244,10 @@
 								</div>
 								<div class="row">
 									<span class="col-lg-4">
-										<input type="email" class="form-control" id="email">
+										<input type="email" class="form-control" id="email" name="email">
 									</span>
 									<span class="col-lg-4">
-										<input type="text" class="form-control" id="name">
+										<input type="text" class="form-control" id="name" name="name">
 									</span>
 								</div>
 								<br>
@@ -265,13 +264,13 @@
 								</div>
 								<div class="row">
 									<span class="col-lg-4">
-										<input type="text" class="form-control" id="address">
+										<input type="text" class="form-control" id="address" name="address">
 									</span>
 									<span class="col-lg-4">
-										<input type="text" class="form-control" id="phone">
+										<input type="text" class="form-control" id="phone" name="phone">
 									</span>
 									<span class="col-lg-2">
-										<input type="number" class="form-control" id="age">
+										<input type="number" class="form-control" id="age" name="age">
 									</span>
 								</div>
 								<br>
@@ -288,13 +287,13 @@
 								</div>
 								<div class="row">
 									<span class="col-lg-4">
-										<input type="text" class="form-control" id="entes">
+										<input type="text" class="form-control" id="entes" name="entes">
 									</span>
 									<span class="col-lg-4">
-										<input type="text" class="form-control" id="op">
+										<input type="text" class="form-control" id="op" name="op">
 									</span>
 									<span class="col-lg-4">
-										<input type="text" class="form-control" id="ap">
+										<input type="text" class="form-control" id="ap" name="ap">
 									</span>
 								</div>
 								<br>

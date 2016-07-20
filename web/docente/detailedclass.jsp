@@ -60,7 +60,7 @@
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
         <div class="table-responsive">
-          <table class="table table-hover">
+          <table id="reportTable" name="reportTable" class="table table-hover">
             <thead class="thead-align">
               <tr>
                 <th>#</th>

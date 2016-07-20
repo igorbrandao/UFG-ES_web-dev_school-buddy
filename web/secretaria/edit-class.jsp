@@ -74,7 +74,7 @@
 						</div>
 						<div class="row">
 							<span class="col-lg-4">
-							<input class="form-control" type="text" id="className" placeholder="nome">
+							<input class="form-control" type="text" id="className" name="className" placeholder="nome">
 							</span>
 							<span class="col-lg-offset-1 col-lg-1">
                                 <button id="find" type="button" data-toggle="modal" class="btn btn-info" data-target=".bs-example-modal-lg" style="float: right;">Encontrar Turma</button>

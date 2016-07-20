@@ -76,7 +76,7 @@
 								</ul>
 							</span>
 							<span class="col-lg-6">
-							<input class="form-control" type="text" id="type" placeholder="selecione" disabled="disabled">
+							<input class="form-control" type="text" id="type" name="type" placeholder="selecione" disabled="disabled">
 							</span>
 						</div>
 						<br>

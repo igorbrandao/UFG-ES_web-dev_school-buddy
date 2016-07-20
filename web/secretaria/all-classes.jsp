@@ -78,7 +78,7 @@
 
 				</div>
 				<div class="well">
-					<table id="classesTable" class="table">
+					<table id="classesTable" name="classesTable" class="table">
 						<thead>
 							<tr data-status="all">
 								<th>Turma</th>

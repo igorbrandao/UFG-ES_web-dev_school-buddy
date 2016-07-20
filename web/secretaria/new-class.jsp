@@ -123,13 +123,13 @@
 								</div>
 								<div class="row">
 									<span class="col-lg-3">
-										<input type="text" class="form-control" id="className">
+										<input type="text" class="form-control" id="className" name="className">
 									</span>
 									<span class="col-lg-1 col-lg-offset-1">
-										<input type="number" min="1" max="50" class="form-control" id="totalStudents">
+										<input type="number" min="1" max="50" class="form-control" id="totalStudents" name="totalStudents">
 									</span>
 									<span class="col-lg-1 col-lg-offset-2">
-										<input type="number" min="1" max="10" class="form-control" id="totalSubjects">
+										<input type="number" min="1" max="10" class="form-control" id="totalSubjects" name="totalSubjects">
 									</span>
 								</div>
     						</div>

@@ -61,7 +61,7 @@
     <div class="row">
       <div class="col-md-10 col-md-offset-1">
         <div class="table-responsive">
-          <table id="gradesTable" class="table table-hover table-responsive">
+          <table  id="gradesTable" name="gradesTable" class="table table-hover table-responsive">
             <thead class="thead-align">
               <tr>
                 <!-- NAO CENTRALIZA! -->

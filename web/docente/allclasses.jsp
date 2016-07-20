@@ -62,7 +62,7 @@
       <div class="col-md-10 col-md-offset-1">
         <!-- Lista de Turmas -->
         <div class="table-responsive">
-          <table class="table table-hover">
+          <table id="docenteTable" name="docenteTable" class="table table-hover">
             <thead class="thead-align">
               <tr>
                 <th>Nome da Turma</th>

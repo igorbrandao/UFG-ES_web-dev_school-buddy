@@ -78,7 +78,7 @@
 
 				</div>
 				<div class="well">
-					<table id="usersTable" class="table">
+					<table id="usersTable" name="usersTable" class="table">
 						<thead>
 							<tr data-status="all">
 								<th>Matrícula</th>
@@ -178,10 +178,10 @@
 						</div>
 						<div class="row">
 							<span class="col-lg-4">
-								<input type="email" class="form-control" id="email-professor">
+								<input type="email" class="form-control" id="email-professor" name="email-professor">
 							</span>
 							<span class="col-lg-4">
-								<input type="text" class="form-control" id="name-professor">
+								<input type="text" class="form-control" id="name-professor" name="name-professor">
 							</span>
 						</div>
 						<br>
@@ -195,10 +195,10 @@
 						</div>
 						<div class="row">
 							<span class="col-lg-4">
-								<input type="text" class="form-control" id="address-professor">
+								<input type="text" class="form-control" id="address-professor" name="address-professor">
 							</span>
 							<span class="col-lg-4">
-								<input type="text" class="form-control" id="phone-professor">
+								<input type="text" class="form-control" id="phone-professor" name="phone-professor">
 							</span>
 						</div>
 						<br>
@@ -208,7 +208,7 @@
 								<label for="Areas" class="">Areas de Conhecimento</label>
 							</span>
 							<span class="col-lg-6">
-								<input type="text" class="form-control" id="areas">
+								<input type="text" class="form-control" id="areas" name="areas">
 							</span>
 						</div>
 						<br>
