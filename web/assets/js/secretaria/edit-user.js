@@ -7,34 +7,10 @@ var alertTexts =
         "bug": "Sorry, bugs happen..."
 };
 
-var mockedStudent =
-{
-        "enrollment": "101258",
-        "type": "aluno",
-        "email": "email2@domain2.com",
-        "hash": "md5hash1",
-        "name": "Ashley Jacobs",
-        "address": "AVENIDA 85, 759 - QD F-24 - LT 91 - ED. FELICIDADE / SETOR SUL - GOIÂNIA CEP: 74080-010",
-        "phone": "(62)98712-3840"
-};
-
-var mockedTeacher =
-{
-        "enrollment": "201261",
-        "type": "professor",
-        "email": "email5@domain5.com",
-        "hash": "md5hash2",
-        "name": "Aaron Butler",
-        "address": "AVENIDA 85, 759 - QD F-24 - LT 91 - ED. FELICIDADE / SETOR SUL - GOIÂNIA CEP: 74080-010",
-        "phone": "(62)98712-3840",
-        "areas": ["Português", "Matemática"]
-};
-
 $(document).ready(function () {
 
     $('button#find').on('click', function () {
         searchUser();
-        $(this).attr('data-target', '#edit' + userType);
     });
 
 });
@@ -48,24 +24,45 @@ function searchUser() {
         return;
     }
 
-    $.getJSON("ServletFindUser?enrollment=" + enrollment, {}, function (data) {
-        userData = data;
-        console.log("search complete");
+    var param = {"enrollment":enrollment};
+
+    var request = $.ajax({
+        type: "POST",
+        url: "ServletGetUser",
+        data: param,
+        dataType: "text"
     });
 
-    if (!userData) {
-        showAlert("notFound", "alert-warning");
-    }
-    else {
-        userType = userData.type;
-        $('#edit' + userType).find("#editModalTitle").html("Editando " + userType + " " + userData.enrollment + ".");
-        for (var i = 0; i < Object.keys(userData).length; i++){
-            var currentKey = Object.keys(userData)[i];
-            $("input#" + currentKey).val(userData[currentKey]);//$("#formID").val(userData.fieldValue);
+    request.done(function (data){
+
+        userData = JSON.parse(data);
+
+        if (!userData) {
+            showAlert("notFound", "alert-warning");
         }
-        alertTexts.update = "Os dados do " + userType + " de matrícula " + userData.enrollment + " foram alterados.";
-        alertTexts.delete = "O " + userType + " de matrícula " + userData.enrollment + " foi apagado.";
-    }
+        else {
+            userType = userData.type;
+            var userModal = $('#edit-' + userType);
+
+            userModal.find(".modal-title").html("Editando " + userType + " " + userData.enrollment + ".");
+            for (var i = 0; i < Object.keys(userData).length; i++){
+                var currentKey = Object.keys(userData)[i];
+                $("#" + currentKey + "-" + userType).val(userData[currentKey]);
+            }
+            alertTexts.update = "Os dados do " + userType + " de matrícula " + userData.enrollment + " foram alterados.";
+            alertTexts.delete = "O " + userType + " de matrícula " + userData.enrollment + " foi apagado.";
+
+            userModal.modal('toggle');
+        }
+
+    });
+
+    request.fail(function (textStatus, errorThrown){
+        showAlert("alert-danger", "The following error occurred: " + textStatus, errorThrown);
+    });
+
+    event.preventDefault();
+
 }
 
 function showAlert (alertType, alertClass) {

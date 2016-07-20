@@ -28,7 +28,7 @@ public class ServletGetUser extends HttpServlet {
     private void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        response.setContentType("text/html;charset=UTF-8");
+        response.setContentType("application/json");
 
         try(PrintWriter out = response.getWriter()){
             Integer enrollment = Integer.parseInt(request.getParameter("enrollment"));
@@ -36,12 +36,11 @@ public class ServletGetUser extends HttpServlet {
             User user = userDao.getUserByEnrollment(enrollment);
             JSONObject userJSON = new JSONObject();
 
-            userJSON.put("pk_enrollment", user.getPk_enrollment());
-            userJSON.put("user_type", user.getUser_type());
+            userJSON.put("enrollment", user.getPk_enrollment());
+            userJSON.put("type", user.getUser_type());
             userJSON.put("email", user.getEmail());
-            userJSON.put("hash",  user.getHash());
             userJSON.put("name", user.getName());
-            userJSON.put("adress", user.getAddress());
+            userJSON.put("address", user.getAddress());
             userJSON.put("phone", user.getPhone());
 
             out.print(userJSON);

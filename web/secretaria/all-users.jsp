@@ -67,8 +67,8 @@
 						</div>
 						<div class="pull-right">
 							<div class="btn-group">
-								<button type="button" class="btn btn-info btn-filter" data-target="aluno">Alunos</button>
-								<button type="button" class="btn btn-success btn-filter" data-target="professor">Professores</button>
+								<button type="button" class="btn btn-info btn-filter" data-target="discente">Alunos</button>
+								<button type="button" class="btn btn-success btn-filter" data-target="docente">Professores</button>
 								<button type="button" class="btn btn-default btn-filter" data-target="all">Todos</button>
 							</div>
 						</div>
@@ -78,7 +78,7 @@
 
 				</div>
 				<div class="well">
-					<table id="usersTable" name="usersTable" class="table">
+					<table id="usersTable" class="table">
 						<thead>
 							<tr data-status="all">
 								<th>Matrícula</th>
@@ -107,45 +107,45 @@
 
 		<!-- MODAL ALUNO -->
 
-		<div class="modal fade" id="edit-aluno" tabindex="-1" role="dialog">
+		<div class="modal fade" id="edit-discente" tabindex="-1" role="dialog">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="editModalTitle-aluno"></h4>
+						<h4 class="modal-title" id="editModalTitle-discente"></h4>
 					</div>
 					<div class="modal-body">
 						<div class="row">
 							<span class="col-lg-1">
-								<label for="Email-aluno">Email</label>
+								<label for="Email-discente">Email</label>
 							</span>
 							<span class="col-lg-3 col-lg-offset-3">
-								<label for="Name-aluno" class="">Nome Completo</label>
+								<label for="Name-discente" class="">Nome Completo</label>
 							</span>
 						</div>
 						<div class="row">
 							<span class="col-lg-4">
-								<input type="email" class="form-control" id="email-aluno">
+								<input type="email" class="form-control" id="email-discente">
 							</span>
 							<span class="col-lg-4">
-								<input type="text" class="form-control" id="name-aluno">
+								<input type="text" class="form-control" id="name-discente">
 							</span>
 						</div>
 						<br>
 						<div class="row">
 							<span class="col-lg-2">
-								<label for="Address-aluno">Endereço</label>
+								<label for="Address-discente">Endereço</label>
 							</span>
 							<span class="col-lg-2 col-lg-offset-2">
-								<label for="Phone-aluno" class="">Telefone</label>
+								<label for="Phone-discente" class="">Telefone</label>
 							</span>
 						</div>
 						<div class="row">
 							<span class="col-lg-4">
-								<input type="text" class="form-control" id="address-aluno">
+								<input type="text" class="form-control" id="address-discente">
 							</span>
 							<span class="col-lg-4">
-								<input type="text" class="form-control" id="phone-aluno">
+								<input type="text" class="form-control" id="phone-discente">
 							</span>
 						</div>
 						<br>
@@ -160,45 +160,45 @@
 
 		<!-- MODAL PROFESSOR -->
 
-		<div class="modal fade" id="edit-professor" tabindex="-1" role="dialog">
+		<div class="modal fade" id="edit-docente" tabindex="-1" role="dialog">
 			<div class="modal-dialog" role="document">
 				<div class="modal-content">
 					<div class="modal-header">
 						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-						<h4 class="modal-title" id="editModalTitle-professor"></h4>
+						<h4 class="modal-title" id="editModalTitle-docente"></h4>
 					</div>
 					<div class="modal-body">
 						<div class="row">
 							<span class="col-lg-1">
-								<label for="Email-professor">Email</label>
+								<label for="Email-docente">Email</label>
 							</span>
 							<span class="col-lg-3 col-lg-offset-3">
-								<label for="Name-professor" class="">Nome Completo</label>
+								<label for="Name-docente" class="">Nome Completo</label>
 							</span>
 						</div>
 						<div class="row">
 							<span class="col-lg-4">
-								<input type="email" class="form-control" id="email-professor" name="email-professor">
+								<input type="email" class="form-control" id="email-docente" name="email-docente">
 							</span>
 							<span class="col-lg-4">
-								<input type="text" class="form-control" id="name-professor" name="name-professor">
+								<input type="text" class="form-control" id="name-docente" name="name-docente">
 							</span>
 						</div>
 						<br>
 						<div class="row">
 							<span class="col-lg-2">
-								<label for="Address-professor">Endereço</label>
+								<label for="Address-docente">Endereço</label>
 							</span>
 							<span class="col-lg-2 col-lg-offset-2">
-								<label for="Phone-professor" class="">Telefone</label>
+								<label for="Phone-docente" class="">Telefone</label>
 							</span>
 						</div>
 						<div class="row">
 							<span class="col-lg-4">
-								<input type="text" class="form-control" id="address-professor" name="address-professor">
+								<input type="text" class="form-control" id="address-docente" name="address-docente">
 							</span>
 							<span class="col-lg-4">
-								<input type="text" class="form-control" id="phone-professor" name="phone-professor">
+								<input type="text" class="form-control" id="phone-docente" name="phone-docente">
 							</span>
 						</div>
 						<br>

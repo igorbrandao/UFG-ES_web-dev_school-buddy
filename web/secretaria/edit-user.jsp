@@ -77,7 +77,7 @@
 							<input class="form-control" type="number" id="enrollment" name="enrollment" placeholder="Matrícula">
 							</span>
 							<span class="col-lg-offset-1 col-lg-1">
-                                <button id="find" type="button" data-toggle="modal" class="btn btn-info" style="float: right;">Encontrar Usuário</button>
+                                <button id="find" type="button" class="btn btn-info" style="float: right;">Encontrar Usuário</button>
 							</span>
 						</div>
 						<br>
@@ -97,51 +97,45 @@
 
 				<!-- MODAL ALUNO -->
 
-				<div class="modal fade" id="editAluno" tabindex="-1" role="dialog">
+				<div class="modal fade" id="edit-discente" tabindex="-1" role="dialog">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-								<h4 class="modal-title" id="editModalTitle"></h4>
+								<h4 class="modal-title"></h4>
 							</div>
 							<div class="modal-body">
 								<div class="row">
 									<span class="col-lg-1">
-										<label for="Email">Email</label>
+										<label for="Email-discente">Email</label>
 									</span>
 									<span class="col-lg-3 col-lg-offset-3">
-										<label for="Name" class="">Nome Completo</label>
+										<label for="Name-discente" class="">Nome Completo</label>
 									</span>
 								</div>
 								<div class="row">
 									<span class="col-lg-4">
-										<input type="email" class="form-control" id="email" name="email">
+										<input type="email" class="form-control" id="email-discente" name="email">
 									</span>
 									<span class="col-lg-4">
-										<input type="text" class="form-control" id="name" name="name">
+										<input type="text" class="form-control" id="name-discente" name="name">
 									</span>
 								</div>
 								<br>
 								<div class="row">
 									<span class="col-lg-2">
-										<label for="Address">Endereço</label>
+										<label for="Address-discente">Endereço</label>
 									</span>
 									<span class="col-lg-2 col-lg-offset-2">
-										<label for="Phone" class="">Telefone</label>
-									</span>
-									<span class="col-lg-1 col-lg-offset-2">
-										<label for="Age" class="">Idade</label>
+										<label for="Phone-discente" class="">Telefone</label>
 									</span>
 								</div>
 								<div class="row">
 									<span class="col-lg-4">
-										<input type="text" class="form-control" id="address" name="address">
+										<input type="text" class="form-control" id="address-discente" name="address">
 									</span>
 									<span class="col-lg-4">
-										<input type="text" class="form-control" id="phone" name="phone">
-									</span>
-									<span class="col-lg-2">
-										<input type="number" class="form-control" id="age" name="age">
+										<input type="text" class="form-control" id="phone-discente" name="phone">
 									</span>
 								</div>
 								<br>
@@ -157,50 +151,45 @@
 
 				<!-- MODAL PROFESSOR -->
 
-				<div class="modal fade" id="editProfessor" tabindex="-1" role="dialog">
+				<div class="modal fade" id="edit-docente" tabindex="-1" role="dialog">
 					<div class="modal-dialog" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-								<h4 class="modal-title" id="editModalTitle"></h4>
+								<h4 class="modal-title"></h4>
 							</div>
 							<div class="modal-body">
 								<div class="row">
 									<span class="col-lg-1">
-										<label for="Email">Email</label>
+										<label for="Email-docente">Email</label>
 									</span>
 									<span class="col-lg-3 col-lg-offset-3">
-										<label for="Name" class="">Nome Completo</label>
+										<label for="Name-docente" class="">Nome Completo</label>
 									</span>
 								</div>
 								<div class="row">
 									<span class="col-lg-4">
-										<input type="email" class="form-control" id="email" name="email">
+										<input type="email" class="form-control" id="email-docente" name="email">
+                                    </span>>
 									<span class="col-lg-4">
-										<input type="text" class="form-control" id="name" name="name">
+										<input type="text" class="form-control" id="name-docente" name="name">
 									</span>
 								</div>
 								<br>
 								<div class="row">
 									<span class="col-lg-2">
-										<label for="Address">Endereço</label>
+										<label for="Address-discente">Endereço</label>
 									</span>
 									<span class="col-lg-2 col-lg-offset-2">
-										<label for="Phone" class="">Telefone</label>
-									</span>
-									<span class="col-lg-1 col-lg-offset-2">
-										<label for="Age" class="">Idade</label>
+										<label for="Phone-discente" class="">Telefone</label>
 									</span>
 								</div>
 								<div class="row">
 									<span class="col-lg-4">
-										<input type="text" class="form-control" id="address" name="address">
+										<input type="text" class="form-control" id="address-docente" name="address">
 									</span>
 									<span class="col-lg-4">
-										<input type="text" class="form-control" id="phone" name="phone">
-									</span>
-									<span class="col-lg-2">
-										<input type="number" class="form-control" id="age" name="age">
+										<input type="text" class="form-control" id="phone-docente" name="phone">
 									</span>
 								</div>
 								<br>
@@ -219,89 +208,6 @@
 								<button type="button" onClick="showAlert('delete', 'alert-info')" class="btn btn-danger pull-left" data-dismiss="modal">Apagar Usuário</button>
 								<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
 								<button type="button" onClick="showAlert('update', 'alert-success')" class="btn btn-primary" data-dismiss="modal">Salvar Modificações</button>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- MODAL RESPONSAVEL -->
-
-				<div class="modal fade" id="editResponsavel" tabindex="-1" role="dialog">
-					<div class="modal-dialog" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-								<h4 class="modal-title" id="editModalTitle"></h4>
-							</div>
-							<div class="modal-body">
-								<div class="row">
-									<span class="col-lg-1">
-										<label for="Email">Email</label>
-									</span>
-									<span class="col-lg-3 col-lg-offset-3">
-										<label for="Name" class="">Nome Completo</label>
-									</span>
-								</div>
-								<div class="row">
-									<span class="col-lg-4">
-										<input type="email" class="form-control" id="email" name="email">
-									</span>
-									<span class="col-lg-4">
-										<input type="text" class="form-control" id="name" name="name">
-									</span>
-								</div>
-								<br>
-								<div class="row">
-									<span class="col-lg-2">
-										<label for="Address">Endereço</label>
-									</span>
-									<span class="col-lg-2 col-lg-offset-2">
-										<label for="Phone" class="">Telefone</label>
-									</span>
-									<span class="col-lg-1 col-lg-offset-2">
-										<label for="Age" class="">Idade</label>
-									</span>
-								</div>
-								<div class="row">
-									<span class="col-lg-4">
-										<input type="text" class="form-control" id="address" name="address">
-									</span>
-									<span class="col-lg-4">
-										<input type="text" class="form-control" id="phone" name="phone">
-									</span>
-									<span class="col-lg-2">
-										<input type="number" class="form-control" id="age" name="age">
-									</span>
-								</div>
-								<br>
-								<div class="row">
-									<span class="col-lg-4">
-										<label for="entes" class="">Matrícula do(s) Ente(s)</label>
-									</span>
-									<span class="col-lg-4">
-										<label for="AP" class="">Atuação Profissional</label>
-									</span>
-									<span class="col-lg-4">
-										<label for="OP" class="">Organização Profissional</label>
-									</span>
-								</div>
-								<div class="row">
-									<span class="col-lg-4">
-										<input type="text" class="form-control" id="entes" name="entes">
-									</span>
-									<span class="col-lg-4">
-										<input type="text" class="form-control" id="op" name="op">
-									</span>
-									<span class="col-lg-4">
-										<input type="text" class="form-control" id="ap" name="ap">
-									</span>
-								</div>
-								<br>
-							</div>
-							<div class="modal-footer">
-								<button type="button" onClick="showAlert('delete', 'alert-info')" class="btn btn-danger pull-left" data-dismiss="modal">Apagar Usuário</button>
-								<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-		        				<button type="button" onClick="showAlert('update', 'alert-success')" class="btn btn-primary" data-dismiss="modal">Salvar Modificações</button>
 							</div>
 						</div>
 					</div>

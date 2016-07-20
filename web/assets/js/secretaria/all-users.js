@@ -53,32 +53,37 @@ $(document).ready(function () {
 function updateUser () {
 
     var map = {};
-    $(".form-control").each(function() {
+    $('#edit-' + userType + ' :input').each(function() {
         map[$(this).attr("id")] = $(this).val();
     });
 
-    function checkEmptyFields(map) {
-        for (var m in map){
-            for (var i = 0; i < map[m].length; i++){
-                if(!map[m][i] || map[m][i] === ""){
-                    return false;
-                }
+    function formHasEmptyFields(map) {
+        for (var i = 0; i < Object.keys(map).length; i++) {
+            var currentKey = Object.keys(map)[i];
+            if (map[currentKey] === "") {
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
-    if (checkEmptyFields(map)) {
-        showAlert("alert-warning", "emptyFields");
+    if (formHasEmptyFields(map)) {
+        showAlert("alert-warning", "Todos os campos do formulário são obrigatórios.");
+        return;
+    }
+    if(map["password"] != map["repeatPassword"]){
+        showAlert("alert-warning", "As senhas não correspondem.");
         return;
     }
 
-    var paramsString = JSON.stringify(map);
+    window.alert("Before: " + map["type"]);
+    map["type"] = map["type"].toLowerCase();
+    window.alert("After: " + map["type"]);
 
     var request = $.ajax({
         type: "POST",
         url: "ServletUpdateUser",
-        data: paramsString,
+        data: map,
         dataType: "text"
     });
 
