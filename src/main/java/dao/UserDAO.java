@@ -16,18 +16,16 @@ public class UserDAO {
     private static final SessionFactory sessionFactory = HibernateSession.getSessionFactory();
 
     public boolean authenticate(Integer enrollment, String hash) {
-
-        return this.getUserByEnrollment(enrollment).getHash().equals(hash);
-
+        return this.getUserByEnrollment(enrollment).getHash().equals(new Hash().getHash(hash));
     }
 
-    public Integer newUser(Integer enrollment, String user_type, String email, String password, String name, String address, String phone){
+    public Integer newUser(String user_type, String email, String password, String name, String address, String phone){
 
         Transaction transact = null;
         Integer userID = null;
         try (Session session = sessionFactory.openSession()) {
             transact = session.beginTransaction();
-            User user = new User(enrollment, user_type, email, password, name, address, phone);
+            User user = new User(user_type, email, password, name, address, phone);
             userID = (Integer) session.save(user);
             transact.commit();
         } catch (HibernateException e) {
