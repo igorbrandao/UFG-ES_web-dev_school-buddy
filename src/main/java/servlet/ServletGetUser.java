@@ -15,8 +15,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class ServletListUsers extends HttpServlet{
+public class ServletGetUser extends HttpServlet {
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -32,26 +31,20 @@ public class ServletListUsers extends HttpServlet{
         response.setContentType("text/html;charset=UTF-8");
 
         try(PrintWriter out = response.getWriter()){
-            UserDAO classDao = new UserDAO();
-            int numPagina = Integer.valueOf(request.getParameter("page"));
-            JSONArray array = new JSONArray();
-            List<User> allUsers= new ArrayList<>();
-            allUsers.addAll(classDao.listUsers());
-            List<List<User>> listaDePaginas = Lists.partition(allUsers, 10);
-            List<User> pagina = listaDePaginas.get(numPagina-1);
+            Integer enrollment = Integer.parseInt(request.getParameter("enrollment"));
+            UserDAO userDao = new UserDAO();
+            User user = userDao.getUserByEnrollment(enrollment);
+            JSONObject userJSON = new JSONObject();
 
-            for (User aUser: pagina){
-                JSONObject classJSON = new JSONObject();
-                classJSON.put("pk_enrollment", aUser.getPk_enrollment());
-                classJSON.put("user_type", aUser.getUser_type());
-                classJSON.put("email", aUser.getEmail());
-                classJSON.put("hash",  aUser.getHash());
-                classJSON.put("name", aUser.getName());
-                classJSON.put("adress", aUser.getAddress());
-                classJSON.put("phone", aUser.getPhone());
-                array.put(classJSON);
-            }
-            out.print(array);
+            userJSON.put("pk_enrollment", user.getPk_enrollment());
+            userJSON.put("user_type", user.getUser_type());
+            userJSON.put("email", user.getEmail());
+            userJSON.put("hash",  user.getHash());
+            userJSON.put("name", user.getName());
+            userJSON.put("adress", user.getAddress());
+            userJSON.put("phone", user.getPhone());
+
+            out.print(userJSON);
             out.flush();
         }
     }
@@ -97,3 +90,4 @@ public class ServletListUsers extends HttpServlet{
     }// </editor-fold>
 
 }
+

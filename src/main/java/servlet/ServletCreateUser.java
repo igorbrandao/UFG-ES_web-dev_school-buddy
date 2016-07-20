@@ -1,6 +1,7 @@
 package servlet;
 
 import dao.UserDAO;
+import util.Hash;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,18 +20,21 @@ public class ServletCreateUser extends HttpServlet{
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException      if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    private void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         response.setContentType("text/html;charset=UTF-8");
+
         try(PrintWriter out = response.getWriter()){
             UserDAO userDao = new UserDAO();
-            String user_type = request.getParameter("user_type");
+            String user_type = request.getParameter("type");
             String email = request.getParameter("email");
-            String senhaHash = request.getParameter("hash");
+            String hash = new Hash().getHash(request.getParameter("password"));
             String name = request.getParameter("name");
-            String address = request.getParameter("adress");
+            String address = request.getParameter("address");
             String phone = request.getParameter("phone");
-            userDao.newUser(user_type,email,senhaHash,name,address,phone);
+            Integer userId = userDao.newUser(user_type,email,hash,name,address,phone);
+            out.print(userId);
             out.flush();
         }
     }

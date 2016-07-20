@@ -15,6 +15,24 @@ function commonForms(){
 			"<input type='email' class='form-control' id='email'>" +
 		"</span>" +
 	"</div>" +
+    "<br>" +
+    "<div class='row'>" +
+        "<span class='col-lg-2 text-center'>" +
+            "<label for='Password' class=''>Senha</label>" +
+        "</span>" +
+        "<span class='col-lg-6'>" +
+            "<input type='password' class='form-control' id='password'>" +
+        "</span>" +
+    "</div>" +
+    "<br>" +
+    "<div class='row'>" +
+        "<span class='col-lg-2 text-center'>" +
+            "<label for='RepeatPassword' class=''>Repita a Senha</label>" +
+        "</span>" +
+        "<span class='col-lg-6'>" +
+            "<input type='password' class='form-control' id='repeatPassword'>" +
+        "</span>" +
+    "</div>" +
 	"<br>" +
 	"<div class='row'>" +
 		"<span class='col-lg-2 text-center'>" +
@@ -39,7 +57,7 @@ function commonForms(){
 			"<label for='Adress'>Endereço</label>" +
 		"</span>" +
 		"<span class='col-lg-6'>" +
-			"<input type='text' class='form-control' id='adress'>" +
+			"<input type='text' class='form-control' id='address'>" +
 		"</span>" +
 	"</div>" +
 	"<br>" +
@@ -55,10 +73,10 @@ function commonForms(){
 }
 
 function specificForms(formValue){
-	if ( formValue === "Aluno" ) {
-		return "";
-	}
-	else if ( formValue === "Professor" ) {
+    if ( formValue === "Discente" ) {
+        return "";
+    }
+    else if ( formValue === "Docente" ) {
 		return "" +
 		"<div class='row'>" +
 			"<span class='col-lg-2 text-center'>" +
@@ -77,58 +95,74 @@ function specificForms(formValue){
 function createUser() {
 
     var map = {};
-    $(".form-control").each(function() {
+    $("input").each(function() {
         map[$(this).attr("id")] = $(this).val();
     });
 
-    function checkEmptyFields(map) {
-        for (var m in map){
-            for (var i = 0; i < map[m].length; i++){
-                if(!map[m][i] || map[m][i] === ""){
-                    return false;
-                }
+    function formHasEmptyFields(map) {
+        for (var i = 0; i < Object.keys(map).length; i++) {
+            var currentKey = Object.keys(map)[i];
+            if (map[currentKey] === "") {
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
-    if (checkEmptyFields(map)) {
-		showAlert("alert-warning", "emptyFields");
+    if (formHasEmptyFields(map)) {
+		showAlert("alert-warning", "Todos os campos do formulário são obrigatórios.");
 		return;
 	}
+    if(map["password"] != map["repeatPassword"]){
+        showAlert("alert-warning", "As senhas não correspondem.");
+        return;
+    }
 
-    var paramsString = JSON.stringify(map);
+    window.alert("Before: " + map["type"]);
+    map["type"] = map["type"].toLowerCase();
+    window.alert("After: " + map["type"]);
 
 	var request = $.ajax({
 		type: "POST",
 		url: "ServletCreateUser",
-		data: paramsString,
+		data: map,
 		dataType: "text"
 	});
 
-	request.done(function (){
-		showAlert("alert-success", "The user was created!");
+	request.done(function (data){
+
+        if(data) {
+            $('#modalLabel').html("Usuário Criado!");
+            $('#modalMessage').html("Essa conta está pronta para uso. Para acessá-la, a matrícula <b>" + data + "</b> e a senha informada devem ser informadas na tela inicial.");
+        }
+        else{
+            $('#modalLabel').html("Bad response...");
+            $('#modalMessage').html("A servlet respondeu a essa requisição de forma inesperada.");
+        }
+
 	});
 
 	request.fail(function (textStatus, errorThrown){
-		showAlert("alert-danger", "The following error occurred: " + textStatus, errorThrown);
+        $('#modalLabel').html("Ops...");
+        $('#modalMessage').html("Encontramos um problema na criação desse usuário, tente novamente por favor. Detalhes da mensagem: " + textStatus.toString() + ", Erro: " + errorThrown.toString());
 	});
 
 	request.always(function (){
-		//Something
+        $('#creationModal').modal('toggle');
 	});
 
 	event.preventDefault();
 
 }
 
-function showAlert (alertClass, alertMessage) {
+function showAlert (alertClass, message) {
 
-	$('#alertMessage').html(
-		"<div id='alertDiv' class='alert alert-dismissible " + alertClass + "' role='alert'><button type='button' class='close' data-dismiss='alert'aria-label='Close'><span aria-hidden='true'>&times;</span></button>" + alertMessage + "</div>"
-	);
-	$("#alertDiv").fadeTo(3000, 500).slideUp(500, function(){
-		$("#alertDiv").alert('close');
-	});
+    $('#alertMessage').html(
+        "<div id='alertDiv' class='alert alert-dismissible " + alertClass + "' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>" + message + "</div>"
+    );
+    $("#alertDiv").fadeTo(3000, 500).slideUp(500, function(){
+        $("#alertDiv").alert('close');
+    });
+    userType = "";
 
 }

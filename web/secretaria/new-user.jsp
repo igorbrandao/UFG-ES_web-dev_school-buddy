@@ -13,7 +13,8 @@
 		<link href="../assets/css/bootstrap.css" rel="stylesheet">
         <link href="../assets/css/style.css" rel="stylesheet">
 	</head>
-	<body>
+
+    <body>
 
 		<!-- FIXED TOP NAVBAR -->
 
@@ -56,6 +57,10 @@
 			</div><!-- /container-fluid -->
 		</div><!-- /blue -->
 
+        <div id="alertMessage">
+
+        </div>
+
 		<!-- CREATION FORMS -->
 
 		<div class="container mtb">
@@ -71,12 +76,12 @@
 							<span class="col-lg-2 dropdown">
 								<button href="#" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Tipo <b class="caret"></b></button>
 								<ul class="dropdown-menu">
-									<li><a onclick="switchForm('Aluno')" href="#">Aluno</a></li>
-									<li><a onclick="switchForm('Professor')" href="#">Professor</a></li>
+									<li><a onclick="switchForm('Discente')" href="#">Discente</a></li>
+									<li><a onclick="switchForm('Docente')" href="#">Docente</a></li>
 								</ul>
 							</span>
 							<span class="col-lg-6">
-							<input class="form-control" type="text" id="type" name="type" placeholder="selecione" disabled="disabled">
+							<input class="form-control" type="text" id="type" placeholder="selecione" disabled="disabled">
 							</span>
 						</div>
 						<br>
@@ -86,19 +91,21 @@
 						<br>
 						<div class="row">
 							<span class="col-lg-offset-7 col-lg-1">
-							<button id="create" type="button" data-toggle="modal" data-target="#creationSucess" class="btn btn-info" style="float: right;" disabled>Criar Novo Usuário</button>
+							<button id="create" type="button" data-toggle="modal" onclick="createUser()" class="btn btn-info" style="float: right;" disabled>Criar Novo Usuário</button>
 							</span>
 						</div>
+
 						<!-- Modal -->
-						<div class="modal fade" id="creationSucess" tabindex="-1" role="dialog">
+
+						<div class="modal fade" id="creationModal" tabindex="-1" role="dialog">
 							<div class="modal-dialog modal-sm" role="document">
 								<div class="modal-content">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-										<h4 class="modal-title" id="myModalLabel">Usuário Criado!</h4>
+										<h4 class="modal-title" id="modalLabel"></h4>
 									</div>
 									<div class="modal-body">
-										<p>Essa conta está pronta para uso. Para acessá-la, use a matrícula [num] e senha [str] na tela inicial.</p>
+										<p id="modalMessage"></p>
 									</div>
 									<div class="modal-footer">
 										<button type="button" class="btn btn-info" data-dismiss="modal">Entendi</button>
@@ -168,5 +175,6 @@
 		<script src="../assets/js/bootstrap.min.js"></script>
 		<script src="../assets/js/secretaria/new-user.js"></script>
 
-	</body>
+    </body>
+
 </html>

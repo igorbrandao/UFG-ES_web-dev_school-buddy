@@ -19,13 +19,13 @@ public class UserDAO {
         return this.getUserByEnrollment(enrollment).getHash().equals(new Hash().getHash(hash));
     }
 
-    public Integer newUser(String user_type, String email, String password, String name, String address, String phone){
+    public Integer newUser(String user_type, String email, String hash, String name, String address, String phone){
 
         Transaction transact = null;
         Integer userID = null;
         try (Session session = sessionFactory.openSession()) {
             transact = session.beginTransaction();
-            User user = new User(user_type, email, password, name, address, phone);
+            User user = new User(user_type, email, hash, name, address, phone);
             userID = (Integer) session.save(user);
             transact.commit();
         } catch (HibernateException e) {

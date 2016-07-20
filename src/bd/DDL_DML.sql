@@ -1,9 +1,8 @@
-CREATE TYPE user_type_enum AS ENUM ('secretaria', 'discente', 'docente');
 
 CREATE TABLE users
 (
   pk_enrollment INTEGER                      NOT NULL,
-  user_type     user_type_enum               NOT NULL,
+  user_type     CHARACTER VARYING(10)        NOT NULL,
   email         CHARACTER VARYING(50) UNIQUE NOT NULL,
   hash          CHARACTER VARYING(50)        NOT NULL,
   name          CHARACTER VARYING(100)       NOT NULL,
@@ -39,14 +38,12 @@ CREATE TABLE classes_subjects
   CONSTRAINT pkey_classes_subjects PRIMARY KEY (cpk_subject_name, cpk_teacher_enrollment)
 );
 
-CREATE TYPE task_type_enum AS ENUM ('atividade', 'prova');
-
 CREATE SEQUENCE task_sequence START 1;
 
 CREATE TABLE tasks
 (
   pk_task_id                     INTEGER                NOT NULL,
-  task_type                      task_type_enum         NOT NULL,
+  task_type                      CHARACTER VARYING(10)  NOT NULL,
   title                          CHARACTER VARYING(50)  NOT NULL,
   start_date                     TIMESTAMP              NOT NULL,
   end_date                       TIMESTAMP              NOT NULL,
@@ -66,7 +63,7 @@ CREATE TABLE tasks_evaluations
   grade                 FLOAT   NOT NULL,
   bimester              INTEGER NOT NULL,
   CONSTRAINT check_valid_grade CHECK (grade >= 0 AND grade <= 10),
-  CONSTRAINT pkey_classes_students PRIMARY KEY (pk_task_evaluation_id)
+  CONSTRAINT pkey_tasks_evaluations PRIMARY KEY (pk_task_evaluation_id)
 );
 
 ALTER TABLE classes_students

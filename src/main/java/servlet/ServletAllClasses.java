@@ -1,11 +1,18 @@
 package servlet;
 
 import dao.ClassDAO;
+import entity.Class;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.HeuristicMixedException;
+import javax.transaction.HeuristicRollbackException;
+import javax.transaction.RollbackException;
+import javax.transaction.SystemException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -21,7 +28,7 @@ public class ServletAllClasses extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException      if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    private void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try(PrintWriter out = response.getWriter()){
@@ -33,14 +40,16 @@ public class ServletAllClasses extends HttpServlet {
 
             for (Class aClass: allClasses){
                 JSONObject classJSON = new JSONObject();
-                classJSON.put("pk_class_name", aClass.getPk_class_name());
-                classJSON.put("total_students", aClass.getTotal_students());
-                classJSON.put("total_subjects",  aClass.getTotal_subjects());
-                classJSON.put("is_active", aClass.is_active());
+                //classJSON.put("pk_class_name", aClass.getPk_class_name());
+                //classJSON.put("total_students", aClass.getTotal_students());
+                //classJSON.put("total_subjects",  aClass.getTotal_subjects());
+                //classJSON.put("is_active", aClass.is_active());
                 array.put(classJSON);
             }
             out.print(array);
             out.flush();
+        } catch (HeuristicMixedException | SystemException | RollbackException | HeuristicRollbackException e) {
+            e.printStackTrace();
         }
     }
 

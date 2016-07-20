@@ -46,7 +46,7 @@ function attemptLogin() {
 function showAlert (alertClass, message) {
 
     $('#loginResult').html(
-        "<div id='loginAlert' class='alert alert-dismissible " + alertClass + "' role='alert'><button type='button' class='close' data-dismiss='alert'aria-label='Close'><span aria-hidden='true'>&times;</span></button>" + message + "</div>"
+        "<div id='loginAlert' class='alert alert-dismissible " + alertClass + "' role='alert'><button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>" + message + "</div>"
     );
     $("#loginAlert").fadeTo(3000, 500).slideUp(500, function(){
         $("#loginAlert").alert('close');

@@ -8,7 +8,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO, generator="user_enrollment")
-    @SequenceGenerator(name="user_enrollment", sequenceName="USERS_ID_SEQUENCE", allocationSize=1)
+    @SequenceGenerator(name="user_enrollment", initialValue=2, sequenceName="USERS_ID_SEQUENCE", allocationSize=1)
     private Integer pk_enrollment;
     private String user_type;
     private String email;

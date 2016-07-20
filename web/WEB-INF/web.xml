@@ -13,11 +13,61 @@
         <servlet-class>servlet.ServletLogin</servlet-class>
     </servlet>
 
+    <servlet>
+        <servlet-name>ServletCreateUser</servlet-name>
+        <servlet-class>servlet.ServletCreateUser</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ServletListUsers</servlet-name>
+        <servlet-class>servlet.ServletListUsers</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ServletGetUser</servlet-name>
+        <servlet-class>servlet.ServletGetUser</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ServletUpdateUser</servlet-name>
+        <servlet-class>servlet.ServletUpdateUser</servlet-class>
+    </servlet>
+
+    <servlet>
+        <servlet-name>ServletDeleteUser</servlet-name>
+        <servlet-class>servlet.ServletDeleteUser</servlet-class>
+    </servlet>
+
     <!-- Mappings -->
 
     <servlet-mapping>
         <servlet-name>ServletLogin</servlet-name>
         <url-pattern>/ServletLogin</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ServletCreateUser</servlet-name>
+        <url-pattern>/secretaria/ServletCreateUser</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ServletListUsers</servlet-name>
+        <url-pattern>/secretaria/ServletListUsers</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ServletGetUser</servlet-name>
+        <url-pattern>/secretaria/ServletGetUser</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ServletUpdateUser</servlet-name>
+        <url-pattern>/secretaria/ServletUpdateUser</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>ServletDeleteUser</servlet-name>
+        <url-pattern>/secretaria/ServletDeleteUser</url-pattern>
     </servlet-mapping>
 
 </web-app>
