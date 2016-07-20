@@ -16,7 +16,11 @@ public class Class {
     //private Set<ClassStudents> students = new HashSet<>();
     //private Set<ClassSubjects> subjects = new HashSet<>();
 
-    public Class() {
+    public Class(String pk_class_name, Integer total_students, Integer total_subjects, Boolean is_active) {
+        this.pk_class_name = pk_class_name;
+        this.total_students = total_students;
+        this.total_subjects = total_subjects;
+        this.is_active = is_active;
     }
 
     public String getPk_class_name() {
